@@ -1,23 +1,33 @@
 /*
 ** EPITECH PROJECT, 2017
-** my_strcat
+** strcat
 ** File description:
-** Concatenates two strings
+** task 2
 */
 
-char *my_strcat(char *dest, char const *src)
-{
-	int cpt = 0;
-	int cpt2 = 0;
+#include <stdlib.h>
 
-	while (dest[cpt] != '\0') {
-		cpt += 1;
+int my_strlen(char *);
+
+char	*my_strcat(char *str1, char *str2)
+{
+	int len = my_strlen(str1) + my_strlen(str2) + 1;
+	char *dest = malloc(sizeof(char) * len);
+	int i = 0;
+	int j = 0;
+
+	if (!dest)
+		return (NULL);
+	while (str1[i] != '\0') {
+		dest[i] = str1[i];
+		i ++;
 	}
-	while (src[cpt2] != '\0') {
-		dest[cpt] = src[cpt2];
-		cpt++;
-		cpt2++;
+	while (str2[j] != '\0') {
+		dest[i] = str2[j];
+		i ++;
+		j ++;
 	}
-	dest[cpt + 1] = '\0';
+	dest[i] = '\0';
+	free(str1);
 	return (dest);
 }

@@ -9,21 +9,19 @@ CC	=	gcc
 
 CFLAGS	=	-Wextra -W -Wall -I ./include/
 
-LIB	=	-L lib/ -lmy -lprintf -ltools
+LIB	=	-L lib/ -lmy -ltools -lncurses
 
 SRC	=	src/main.c
 
 OBJ	=	$(SRC:.c=.o)
 
-NAME	=	binary_name
+NAME	=	tetris
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	make -C ./lib/
 	$(CC) $(OBJ) $(CFLAGS) $(LIB) -o $(NAME)
-	rm -f $(OBJ)
-	make clean -C ./lib/
 
 clean:
 	rm -f $(OBJ)

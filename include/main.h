@@ -26,4 +26,5 @@
 	#include <fcntl.h>
 	#include "my.h"
 	#include "printf.h"
+	#include "struct.h"
 #endif

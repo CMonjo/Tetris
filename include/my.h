@@ -34,7 +34,7 @@
 	int my_str_isupper(char const *str);
 	int my_str_isprintable(char const *str);
 	int my_showstr(char const *str);
-	char *my_strcat(char *dest, char const *src);
+	char *my_strcat(char *str1, char *str2);
 	char *my_strncat(char *dest, char const *src, int nb);
 	int my_putnbr_base(int nbr, char const *base);
 #endif
