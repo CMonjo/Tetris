@@ -12,4 +12,5 @@
 	int my_putstr(char const *str);
 	int my_strlen(char const *str);
 	int my_getnbr(char const *str);
+	char **str_to_array(char *str, char c);
 #endif

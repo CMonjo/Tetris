@@ -39,7 +39,12 @@ void display_map(layers_t *layers)
 	keypad(stdscr, TRUE);
 	while (c != 'e') {
 		clear();
-		mvprintw(0, 0, layers->name);
+		for (int i = 0; layers->name[i + 1]; i++)
+			mvprintw(1 + i, 2, layers->name[i]);
+		for (int i = 0; layers->board[i + 1]; i++)
+			mvprintw(i, 30, layers->board[i]);
+		for (int i = 0; layers->score[i + 1]; i++)
+			mvprintw(8 + i, 0, layers->score[i]);
 		refresh();
 		c = wgetch(stdscr);
 	}
@@ -52,9 +57,10 @@ layers_t *fill_layers(void)
 
 	if (!layers)
 		return (NULL);
-	layers->name = my_read("layers/name.txt");
-	layers->board = my_read("layers/board.txt");
-	if (!layers->name || !layers->board)
+	layers->name = str_to_array(my_read("layers/name.txt"), '\n');
+	layers->board = str_to_array(my_read("layers/board.txt"), '\n');
+	layers->score = str_to_array(my_read("layers/score.txt"), '\n');
+	if (!layers->name || !layers->board || !layers->score)
 		return (NULL);
 	return (layers);
 }
