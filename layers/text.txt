@@ -1,0 +1,7 @@
+Hight score :
+Score :
+
+Lines :
+Level :
+
+Timer :

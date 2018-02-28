@@ -12,5 +12,7 @@
 		char **name;
 		char **board;
 		char **score;
+		char **text;
+		char **next;
 	} layers_t;
 #endif
