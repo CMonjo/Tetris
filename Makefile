@@ -11,7 +11,10 @@ CFLAGS	=	-Wextra -W -Wall -I ./include/
 
 LIB	=	-L lib/ -lmy -ltools -lncurses
 
-SRC	=	src/main.c
+SRC	=	src/main.c 		\
+		src/create_layers.c	\
+		src/display.c		\
+		src/tetriminos.c
 
 OBJ	=	$(SRC:.c=.o)
 

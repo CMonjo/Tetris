@@ -7,70 +7,7 @@
 
 #include "main.h"
 
-char *my_read(char *path)
-{
-	char *map = malloc(sizeof(char));
-	char *buffer = malloc(sizeof(char) * 4096);
-	int fd = open(path, O_RDONLY);
-	int rd;
-
-	if (!map || !buffer || fd < 0)
-		return (NULL);
-	rd = read(fd, buffer, 4094);
-	map[0] = '\0';
-	while (rd > 0) {
-		buffer[rd] = '\0';
-		map = my_strcat(map, buffer);
-		if (!map)
-			return (NULL);
-		rd = read(fd, buffer, 4094);
-	}
-	close(fd);
-	free(buffer);
-	return (map);
-}
-
-void display_map(layers_t *layers)
-{
-	initscr();
-	curs_set(0);
-	keypad(stdscr, TRUE);
-	for (int c = 0; c != 'e';) {
-		clear();
-		for (int i = 0; layers->name[i + 1]; i++)
-			mvprintw(1 + i, 2, layers->name[i]);
-		for (int i = 0; layers->board[i + 1]; i++)
-			mvprintw(i, 40, layers->board[i]);
-		for (int i = 0; layers->score[i + 1]; i++)
-			mvprintw(9 + i, 6, layers->score[i]);
-		for (int i = 0; layers->text[i + 1]; i++)
-			mvprintw(11 + i, 8, layers->text[i]);
-		for (int i = 0; layers->next[i + 1]; i++)
-			mvprintw(1 + i, 65, layers->next[i]);
-		refresh();
-		c = wgetch(stdscr);
-	}
-	endwin();
-}
-
-layers_t *fill_layers(void)
-{
-	layers_t *layers = malloc(sizeof(layers_t));
-
-	if (!layers)
-		return (NULL);
-	layers->name = str_to_array(my_read("layers/name.txt"), '\n');
-	layers->board = str_to_array(my_read("layers/board.txt"), '\n');
-	layers->score = str_to_array(my_read("layers/score.txt"), '\n');
-	layers->next = str_to_array(my_read("layers/next.txt"), '\n');
-	layers->text = str_to_array(my_read("layers/text.txt"), '\n');
-	if (!layers->name || !layers->board || !layers->score|| !layers->next\
-	|| !layers->text)
-		return (NULL);
-	return (layers);
-}
-
-void free_layers(layers_t *layers)
+void free_tetris(layers_t *layers, piece_t *pieces)
 {
 	free(layers->name);
 	free(layers->board);
@@ -78,19 +15,22 @@ void free_layers(layers_t *layers)
 	free(layers->next);
 	free(layers->text);
 	free(layers);
+	free(pieces);
 }
 
 int main(int ac, char **av)
 {
 	layers_t *layers;
+	piece_t *pieces;
 
 	if (ac != 1)
 		return (84);
 	layers = fill_layers();
-	if (!layers)
+	pieces = create_pieces();
+	if (!layers || !pieces)
 		return (84);
 	av = av;
-	display_map(layers);
-	free_layers(layers);
+	display_tetris(layers, pieces);
+	free_tetris(layers, pieces);
 	return (0);
 }

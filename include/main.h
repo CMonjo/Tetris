@@ -27,4 +27,11 @@
 	#include "my.h"
 	#include "tools.h"
 	#include "struct.h"
+
+	void free_tetris(layers_t *layers, piece_t *pieces);
+	layers_t *fill_layers(void);
+	char *my_read(char *path);
+	void display_layers(layers_t *layers);
+	void display_tetris(layers_t *layers, piece_t *pieces);
+	piece_t *create_pieces(void);
 #endif

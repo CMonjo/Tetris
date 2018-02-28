@@ -15,4 +15,11 @@
 		char **text;
 		char **next;
 	} layers_t;
+
+	typedef struct piece_s {
+		int x;
+		int y;
+		int color;
+		char **piece;
+	} piece_t;
 #endif
