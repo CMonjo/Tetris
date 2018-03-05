@@ -9,11 +9,13 @@ CC	=	gcc
 
 CFLAGS	=	-Wextra -W -Wall -I ./include/
 
-LIB	=	-L lib/ -lmy -ltools -lncurses
+LIB	=	-L lib/ -lmy -ltools -lncurses -g3
 
 SRC	=	src/main.c 		\
+		src/create_tetris.c	\
 		src/create_layers.c	\
 		src/display.c		\
+		src/move_tetris.c	\
 		src/tetriminos.c
 
 OBJ	=	$(SRC:.c=.o)

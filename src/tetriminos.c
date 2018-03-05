@@ -30,14 +30,26 @@ piece_t info_piece(char *path)
 	}
 	piece.piece[piece.y] = NULL;
 	free(file);
+	for (int i = 0; lines[i]; i++)
+		free(lines[i]);
+	free(lines);
+	// for (int i = 0; info[i]; i++)
+	// 	free(info[i]);
+	// free(info);
 	return (piece);
 }
 
 piece_t *create_pieces(void)
 {
-	piece_t *pieces;
+	piece_t *pieces = malloc(sizeof(piece_t) * 6);
 
-	pieces = malloc(sizeof(piece_t) * 1);
-	pieces[0] = info_piece("pieces/6.tetrimino");
+	if (!pieces)
+		return (NULL);
+	pieces[0] = info_piece("pieces/5.tetrimino");
+	pieces[1] = info_piece("pieces/6.tetrimino");
+	pieces[2] = info_piece("pieces/7.tetrimino");
+	pieces[3] = info_piece("pieces/bar.tetrimino");
+	pieces[4] = info_piece("pieces/inverted-L.tetrimino");
+	pieces[5] = info_piece("pieces/square.tetrimino");
 	return (pieces);
 }

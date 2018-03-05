@@ -30,17 +30,31 @@ char *my_read(char *path)
 	return (map);
 }
 
+char **new_layer(char *path)
+{
+	char *str = my_read(path);
+	char **array;
+
+	if (!str)
+		return (NULL);
+	array = str_to_array(str, '\n');
+	free(str);
+	if (!array)
+		return (NULL);
+	return (array);
+}
+
 layers_t *fill_layers(void)
 {
 	layers_t *layers = malloc(sizeof(layers_t));
 
 	if (!layers)
 		return (NULL);
-	layers->name = str_to_array(my_read("layers/name.txt"), '\n');
-	layers->board = str_to_array(my_read("layers/board.txt"), '\n');
-	layers->score = str_to_array(my_read("layers/score.txt"), '\n');
-	layers->next = str_to_array(my_read("layers/next.txt"), '\n');
-	layers->text = str_to_array(my_read("layers/text.txt"), '\n');
+	layers->name = new_layer("layers/name.txt");
+	layers->board = new_layer("layers/board.txt");
+	layers->score = new_layer("layers/score.txt");
+	layers->next = new_layer("layers/next.txt");
+	layers->text = new_layer("layers/text.txt");
 	if (!layers->name || !layers->board || !layers->score|| !layers->next\
 	|| !layers->text)
 		return (NULL);

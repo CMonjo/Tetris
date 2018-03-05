@@ -21,13 +21,15 @@ void display_layers(layers_t *layers)
 		mvprintw(1 + i, 65, layers->next[i]);
 }
 
-void display_pieces(piece_t *pieces)
+void display_pieces(tetris_t *tetris)
 {
-	for (int i = 0; pieces->piece[i]; i++)
-		mvprintw(5 + i, 50, pieces->piece[i]);
+	for (int i = 0; tetris->pieces[tetris->next].piece[i]; i++)
+		mvprintw(2 + i, 67, tetris->pieces[tetris->next].piece[i]);
+	for (int i = 0; tetris->map[i]; i++)
+		mvprintw(1 + i, 41, tetris->map[i]);
 }
 
-void display_tetris(layers_t *layers, piece_t *pieces)
+void display_tetris(layers_t *layers, tetris_t *tetris)
 {
 	initscr();
 	curs_set(0);
@@ -35,9 +37,10 @@ void display_tetris(layers_t *layers, piece_t *pieces)
 	for (int c = 0; c != 'e';) {
 		clear();
 		display_layers(layers);
-		display_pieces(pieces);
+		display_pieces(tetris);
 		refresh();
 		c = wgetch(stdscr);
+		move_tetris(tetris, c);
 	}
 	endwin();
 }

@@ -22,4 +22,14 @@
 		int color;
 		char **piece;
 	} piece_t;
+
+	typedef struct tetris_s {
+		piece_t *pieces;
+		char **map;
+		int x;
+		int y;
+		int pos;
+		int next;
+	} tetris_t;
+
 #endif
