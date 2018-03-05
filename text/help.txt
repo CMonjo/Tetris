@@ -1,0 +1,14 @@
+Usage :		./tetris [options]
+
+Options:
+   -help
+   -l    -level={num}		Display this help
+   -kl   -key-left={K}
+   -kr   -key-right={K}
+   -kt   -key-turn={K}
+   -kd   -key-drop={K}
+   -kq   -key-quit={K}
+   -kp   -key-pause={K}
+   -map-size={row,col}
+   -w    -without-next
+   -d    -debug
