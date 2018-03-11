@@ -7,18 +7,16 @@
 
 #include "main.h"
 
-char **create_map(tetris_t *tetris)
+int **create_board(tetris_t *tetris)
 {
-	char **map = malloc(sizeof(char *) * (tetris->y + 1));
+	int **board = malloc(sizeof(int *) * tetris->y);
 
 	for (int i = 0; i < tetris->y; i++) {
-		map[i] = malloc(sizeof(char) * (tetris->x + 1));
+		board[i] = malloc(sizeof(int) * tetris->x);
 		for (int j = 0; j < tetris->x; j++)
-			map[i][j] = ' ';
-		map[i][tetris->x] = '\0';
+			board[i][j] = 0;
 	}
-	map[tetris->y] = NULL;
-	return (map);
+	return (board);
 }
 
 tetris_t *create_tetris(void)
@@ -30,7 +28,7 @@ tetris_t *create_tetris(void)
 	tetris->pieces = create_pieces();
 	tetris->x = 20;
 	tetris->y = 20;
-	tetris->map = create_map(tetris);
+	tetris->board = create_board(tetris);
 	tetris->pos = 1;
 	tetris->next = rand() % 6;
 	if (!tetris->pieces)

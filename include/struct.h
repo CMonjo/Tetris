@@ -25,7 +25,7 @@
 
 	typedef struct tetris_s {
 		piece_t *pieces;
-		char **map;
+		int **board;
 		int x;
 		int y;
 		int pos;

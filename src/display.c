@@ -25,8 +25,13 @@ void display_pieces(tetris_t *tetris)
 {
 	for (int i = 0; tetris->pieces[tetris->next].piece[i]; i++)
 		mvprintw(2 + i, 67, tetris->pieces[tetris->next].piece[i]);
-	for (int i = 0; tetris->map[i]; i++)
-		mvprintw(1 + i, 41, tetris->map[i]);
+	for (int i = 0; i < tetris->y; i++) {
+		for (int j = 0; j < tetris->x; j++) {
+			tetris->board[i][j] != 0
+			? mvprintw(1 + i, 41 + j, "*")
+			: mvprintw(1 + i, 41 + j, " ");
+		}
+	}
 }
 
 void display_tetris(layers_t *layers, tetris_t *tetris)

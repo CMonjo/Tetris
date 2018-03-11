@@ -24,6 +24,7 @@ piece_t info_piece(char *path)
 			piece.piece[j - 1][m] = lines[j][k];
 			(lines[j][k + 1] != '\0') ?\
 			piece.piece[j - 1][m + 1] = ' ' : 0;
+			piece.x += (lines[j][k + 1] != '\0') ? 1 : 0;
 			(lines[j][k + 1] != '\0') ? m++ : 0;
 		}
 		piece.piece[j - 1][m] = '\0';
