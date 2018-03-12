@@ -30,6 +30,7 @@ tetris_t *create_tetris(void)
 	tetris->y = 20;
 	tetris->board = create_board(tetris);
 	tetris->pos = 1;
+	tetris->actual = rand() % 6;
 	tetris->next = rand() % 6;
 	if (!tetris->pieces)
 		return (NULL);

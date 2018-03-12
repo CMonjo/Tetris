@@ -35,8 +35,7 @@ void display_pieces(tetris_t *tetris)
 			else
 				mvprintw(2 + i, 67 + j, " ");
 		}
-	}
-	for (int i = 0; i < tetris->y; i++) {
+	} for (int i = 0; i < tetris->y; i++) {
 		for (int j = 0; j < tetris->x; j++) {
 			if (tetris->board[i][j] == 0)
 				mvprintw(1 + i, 41 + j, " ");

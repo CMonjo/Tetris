@@ -29,6 +29,7 @@
 		int x;
 		int y;
 		int pos;
+		int actual;
 		int next;
 	} tetris_t;
 
