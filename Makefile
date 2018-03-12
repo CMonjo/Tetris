@@ -16,7 +16,8 @@ SRC	=	src/main.c 		\
 		src/create_layers.c	\
 		src/display.c		\
 		src/move_tetris.c	\
-		src/tetriminos.c
+		src/tetriminos.c	\
+		src/init_color.c
 
 OBJ	=	$(SRC:.c=.o)
 

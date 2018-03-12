@@ -31,8 +31,11 @@ void move_tetris(tetris_t *tetris, char c)
 	}
 	for (int i = 0; i < tetris->pieces[tetris->next].y; i++) {
 		for (int j = 0; j < tetris->pieces[tetris->next].x; j++)
-			tetris->board[y + i][x + j] =\
-			tetris->pieces[tetris->next].color;
+			if (tetris->pieces[tetris->next].piece[i][j] != 0)
+				tetris->board[y + i][x + j] =\
+				tetris->pieces[tetris->next].color;
+			else
+			tetris->board[y + i][x + j] = 0;
 	}
 	o_x = x;
 	o_y = y;
