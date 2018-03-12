@@ -38,7 +38,7 @@ int tetris_help(int ac, char **av)
 {
 	char *help;
 
-	if (ac == 2 && my_strcmp(av[1], "-help")) {
+	if (ac == 2 && (my_strcmp(av[1], "-help") == 0 || my_strcmp(av[1], "--help") == 0)) {
 		help = my_read("text/help.txt");
 		my_putstr(help);
 		free(help);
@@ -59,13 +59,6 @@ int main(int ac, char **av)
 	tetris = create_tetris();
 	if (!layers || !tetris)
 		return (84);
-	// for (int x = 0; x < 6; x++) {
-	// 	for (int j = 0; j < tetris->pieces[x].y; j++) {
-	// 		for (int i = 0; i < tetris->pieces[x].x; i++)
-	// 			printf("%d", tetris->pieces[x].piece[j][i]);
-	// 		printf("|\n");
-	// 	}
-	// }
 	display_tetris(layers, tetris);
 	//free_tetris(layers, tetris);
 	return (0);
