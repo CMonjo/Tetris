@@ -29,9 +29,9 @@ piece_t info_piece(char *path)
 	for (int i = 0; lines[i]; i++)
 		free(lines[i]);
 	free(lines);
-	// for (int i = 0; info[i]; i++)
-	// 	free(info[i]);
-	// free(info);
+	for (int i = 0; info[i]; i++)
+		free(info[i]);
+	free(info);
 	return (piece);
 }
 

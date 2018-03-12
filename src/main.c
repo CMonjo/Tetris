@@ -25,12 +25,15 @@ void free_tetris(layers_t *layers, tetris_t *tetris)
 		free(layers->text[i]);
 	free(layers->text);
 	free(layers);
-	// for (int i = 0; i < 6; i++) {
-	// 	for (int j = 0; tetris->pieces[i].piece[j]; j++)
-	// 		free(tetris->pieces[i].piece[j]);
-	// 	free(tetris->pieces[i].piece);
-	// }
+	for (int i = 0; i < 6; i++) {
+		for (int j = 0; j < tetris->pieces[i].y; j++)
+			free(tetris->pieces[i].piece[j]);
+		free(tetris->pieces[i].piece);
+	}
 	free(tetris->pieces);
+	for (int i = 0; i < tetris->y; i++)
+		free(tetris->board[i]);
+	free(tetris->board);
 	free(tetris);
 }
 
@@ -61,6 +64,6 @@ int main(int ac, char **av)
 	if (!layers || !tetris)
 		return (84);
 	display_tetris(layers, tetris);
-	//free_tetris(layers, tetris);
+	free_tetris(layers, tetris);
 	return (0);
 }
