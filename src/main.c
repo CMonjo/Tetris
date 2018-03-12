@@ -55,15 +55,17 @@ int main(int ac, char **av)
 {
 	layers_t *layers;
 	tetris_t *tetris;
+	keys_t *keys;
 
 	srand(time(NULL));
 	if (tetris_help(ac, av) == 1)
 		return (0);
 	layers = fill_layers();
 	tetris = create_tetris();
+	keys = init_keys();
 	if (!layers || !tetris)
 		return (84);
-	display_tetris(layers, tetris);
+	display_tetris(layers, tetris, keys);
 	free_tetris(layers, tetris);
 	return (0);
 }

@@ -48,13 +48,13 @@ void display_pieces(tetris_t *tetris)
 	}
 }
 
-void display_tetris(layers_t *layers, tetris_t *tetris)
+void display_tetris(layers_t *layers, tetris_t *tetris, keys_t *keys)
 {
 	initscr();
 	init_colors();
 	curs_set(0);
 	keypad(stdscr, TRUE);
-	for (int c = 0; c != 'e';) {
+	for (int c = 0; c != keys->quit;) {
 		clear();
 		display_layers(layers);
 		display_pieces(tetris);
