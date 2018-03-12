@@ -20,7 +20,7 @@
 		int x;
 		int y;
 		int color;
-		char **piece;
+		int **piece;
 	} piece_t;
 
 	typedef struct tetris_s {

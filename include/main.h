@@ -36,4 +36,5 @@
 	piece_t *create_pieces(void);
 	tetris_t *create_tetris(void);
 	void move_tetris(tetris_t *tetris, char c);
+	void init_colors(void);
 #endif

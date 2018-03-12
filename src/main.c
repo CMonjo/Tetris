@@ -59,6 +59,13 @@ int main(int ac, char **av)
 	tetris = create_tetris();
 	if (!layers || !tetris)
 		return (84);
+	// for (int x = 0; x < 6; x++) {
+	// 	for (int j = 0; j < tetris->pieces[x].y; j++) {
+	// 		for (int i = 0; i < tetris->pieces[x].x; i++)
+	// 			printf("%d", tetris->pieces[x].piece[j][i]);
+	// 		printf("|\n");
+	// 	}
+	// }
 	display_tetris(layers, tetris);
 	//free_tetris(layers, tetris);
 	return (0);
