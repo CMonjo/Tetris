@@ -38,7 +38,8 @@ int tetris_help(int ac, char **av)
 {
 	char *help;
 
-	if (ac == 2 && (my_strcmp(av[1], "-help") == 0 || my_strcmp(av[1], "--help") == 0)) {
+	if (ac == 2 && (my_strcmp(av[1], "-help") == 0 ||
+	my_strcmp(av[1], "--help") == 0)) {
 		help = my_read("text/help.txt");
 		my_putstr(help);
 		free(help);
