@@ -40,7 +40,7 @@ int tetris_help(int ac, char **av)
 
 	if (ac == 2 && (my_strcmp(av[1], "-help") == 0 ||
 	my_strcmp(av[1], "--help") == 0)) {
-		help = my_read("text/help.txt");
+		help = my_read("help/help.txt");
 		my_putstr(help);
 		free(help);
 		return (1);

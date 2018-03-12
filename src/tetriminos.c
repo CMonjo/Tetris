@@ -41,11 +41,11 @@ piece_t *create_pieces(void)
 
 	if (!pieces)
 		return (NULL);
-	pieces[0] = info_piece("tetriminos/5.tetrimino");
-	pieces[1] = info_piece("tetriminos/6.tetrimino");
-	pieces[2] = info_piece("tetriminos/7.tetrimino");
-	pieces[3] = info_piece("tetriminos/bar.tetrimino");
-	pieces[4] = info_piece("tetriminos/inverted-L.tetrimino");
-	pieces[5] = info_piece("tetriminos/square.tetrimino");
+	pieces[0] = info_piece("pieces/5.tetrimino");
+	pieces[1] = info_piece("pieces/6.tetrimino");
+	pieces[2] = info_piece("pieces/7.tetrimino");
+	pieces[3] = info_piece("pieces/bar.tetrimino");
+	pieces[4] = info_piece("pieces/inverted-L.tetrimino");
+	pieces[5] = info_piece("pieces/square.tetrimino");
 	return (pieces);
 }
