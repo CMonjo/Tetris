@@ -28,11 +28,12 @@
 	#include "tools.h"
 	#include "struct.h"
 
+	keys_t *init_keys(void);
 	void free_tetris(layers_t *layers, tetris_t *tetris);
 	layers_t *fill_layers(void);
 	char *my_read(char *path);
 	void display_layers(layers_t *layers);
-	void display_tetris(layers_t *layers, tetris_t *tetris);
+	void display_tetris(layers_t *layers, tetris_t *tetris, keys_t *keys);
 	piece_t *create_pieces(void);
 	tetris_t *create_tetris(void);
 	void move_tetris(tetris_t *tetris, char c);

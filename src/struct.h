@@ -33,8 +33,4 @@
 		int next;
 	} tetris_t;
 
-	typedef struct keys_s {
-		int quit;
-	} keys_t;
-
 #endif

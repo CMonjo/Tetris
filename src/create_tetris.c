@@ -7,6 +7,14 @@
 
 #include "main.h"
 
+keys_t *init_keys(void)
+{
+	keys_t *keys = malloc(sizeof(keys_t));
+
+	keys->quit = 'q';
+	return (keys);
+}
+
 int **create_board(tetris_t *tetris)
 {
 	int **board = malloc(sizeof(int *) * tetris->y);
