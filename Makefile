@@ -20,6 +20,7 @@ SRC	=	src/main.c 			\
 		src/settings.c			\
 		src/input.c			\
 		src/display_debug_mode.c	\
+		src/set_options.c		\
 		src/init_color.c
 
 OBJ	=	$(SRC:.c=.o)

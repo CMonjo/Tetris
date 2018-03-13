@@ -61,5 +61,8 @@
 	void set_key_left();
 	void set_level();
 	void set_help();
-
+	void set_level();
+	void set_map_size();
+	void set_next();
+	char *parse_long_name();
 #endif
