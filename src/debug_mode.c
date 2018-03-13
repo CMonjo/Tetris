@@ -23,11 +23,6 @@ void set_map_size(void)
 	my_putstr("func map size\n");
 }
 
-void set_debug(void)
-{
-	my_putstr("*** DEBUG MODE ***\n");
-}
-
 void set_next(void)
 {
 	my_putstr("func set next\n");
@@ -64,6 +59,24 @@ void set_help(void)
 	my_putstr(help);
 	free(help);
 	exit (0);
+}
+
+void set_debug(void)
+{
+	my_putstr("*** DEBUG MODE ***\n");
+	my_putstr("Key Left :	");
+	my_putstr("\nKey Right :	");
+	my_putstr("\nKey Turn :	");
+	my_putstr("\nKey Drop :	");
+	my_putstr("\nKey Quit :	");
+	my_putstr("\nKey Pause :	");
+	my_putstr("\nNext :	"); // "Yes" or ("No" ?)
+	my_putstr("\nLevel :	");
+	my_putstr("\nSize :	");
+	my_putstr("\nPress any key to start Tetris");
+
+	my_putstr("\n\nATTENTION LE PRESS KEY MARCHE POUR L'INSTANT QU'AVEC ENTER");
+	get_next_line(0);
 }
 //./tetris -d ‘x’ -D --key-turn=‘ ’ -p ‘p’
 

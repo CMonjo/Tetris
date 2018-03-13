@@ -7,6 +7,9 @@
 
 #ifndef MAIN_H_
 	#define MAIN_H_
+
+	// INCLUDES
+
 	#include <ncurses.h>
 	#include <stdio.h>
 	#include <unistd.h>
@@ -24,7 +27,15 @@
 	#include "tools.h"
 	#include "struct.h"
 
+	// EXTERN
+
 	extern  settings_t settings[];
+
+	// DEFINES
+
+	#define READ_SIZE 1
+
+	// PROTOTYPES
 
 	keys_t *init_keys(void);
 	void free_tetris(layers_t *layers, tetris_t *tetris);

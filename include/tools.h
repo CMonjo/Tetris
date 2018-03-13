@@ -13,4 +13,5 @@
 	int my_strlen(char const *str);
 	int my_getnbr(char const *str);
 	char **str_to_array(char *str, char c);
+	char *get_next_line(int fd);
 #endif
