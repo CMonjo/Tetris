@@ -45,7 +45,7 @@
 		int **board;
 		int x;
 		int y;
-		int pos;
+		int lose;
 		int actual;
 		int next;
 		int display_next;

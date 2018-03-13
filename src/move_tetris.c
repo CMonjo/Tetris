@@ -7,17 +7,22 @@
 
 #include "main.h"
 
-// for (int i = 0; i < tetris->pieces[tetris->actual].y; i++) {
-// 	for (int j = 0; j < tetris->pieces[tetris->actual].x; j++) {
-// 		if (tetris->pieces[tetris->actual].piece[i][j] != 0 &&
-// 		tetris->board[*y + i + 1][*x + j] != 0)
-// 			return (1);
-// 	}
-// }
+int tetriminos_colide(tetris_t *tetris, int *x, int *y)
+{
+	for (int i = 0, line = 0; i < tetris->pieces[tetris->actual].x;
+	i++, line = 0) {
+		for (int j = 0; j < tetris->pieces[tetris->actual].y; j++)
+			line = (tetris->pieces[tetris->actual].piece[j][i]
+			!= 0) ? j : line;
+		if (tetris->board[*y + line][*x + i] != 0)
+			return (1);
+	}
+	return (0);
+}
 
 int tetris_colide(tetris_t *tetris, int *x, int *y)
 {
-	if (*y + tetris->pieces[tetris->actual].y > tetris->y + 1)
+	if (*y + tetris->pieces[tetris->actual].y > tetris->y)
 		*y -= 1;
 	if (*y + tetris->pieces[tetris->actual].y == tetris->y + 1)
 		return (1);
@@ -25,6 +30,8 @@ int tetris_colide(tetris_t *tetris, int *x, int *y)
 		*x = *x - 1;
 	if (*x < 0)
 		*x = 0;
+	if (tetriminos_colide(tetris, x, y) == 1)
+		return (1);
 	return (0);
 }
 
@@ -66,7 +73,6 @@ void move_tetris(tetris_t *tetris, char c)
 	o_x = x;
 	o_y = y;
 	y++;
-	clear_tetriminos(tetris, o_x, o_y);
 	tetris_keys(&x, &y, c);
 	if (tetris_colide(tetris, &x, &y) == 1) {
 		tetris->actual = tetris->next;
@@ -76,5 +82,6 @@ void move_tetris(tetris_t *tetris, char c)
 		o_x = 0;
 		o_y = 0;
 	}
+	clear_tetriminos(tetris, o_x, o_y);
 	display_tetriminos(tetris, x, y);
 }

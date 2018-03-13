@@ -29,10 +29,11 @@ tetris_t *create_tetris(void)
 	tetris->x = 20;
 	tetris->y = 20;
 	tetris->board = create_board(tetris);
-	tetris->pos = 1;
+	tetris->lose = 0;
 	tetris->actual = rand() % 6;
 	tetris->next = rand() % 6;
 	tetris->high = my_read("help/high_score.txt");
+	tetris->high[my_strlen(tetris->high) - 1] = '\0';
 	tetris->score = 0;
 	tetris->lines = 0;
 	tetris->level = 1;

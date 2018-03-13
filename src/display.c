@@ -38,6 +38,7 @@ void display_info(tetris_t *tetris, layers_t *layers)
 	mvprintw(14, 26, str);
 	str = i_to_a(tetris->level);
 	mvprintw(15, 26, str);
+	tetris->timer = clock() / CLOCKS_PER_SEC;
 	str = i_to_a(tetris->timer);
 	mvprintw(17, 26, str);
 	free(str);
@@ -92,13 +93,13 @@ void display_tetris(layers_t *layers, tetris_t *tetris, keys_t *keys)
 	init_colors();
 	curs_set(0);
 	keypad(stdscr, TRUE);
-	for (int c = 0; c != 'e';) {
+	for (int c = 0; c != 'e' && tetris->lose == 0;) {
 		clear();
 		display_layers(layers);
 		display_info(tetris, layers);
 		display_pieces(tetris);
 		refresh();
-		timeout(500);
+		timeout(0.5);
 		c = wgetch(stdscr);
 		move_tetris(tetris, c);
 	}
