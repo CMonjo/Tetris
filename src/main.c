@@ -11,7 +11,16 @@ keys_t *init_keys(void)
 {
 	keys_t *keys = malloc(sizeof(keys_t));
 
+	keys->left = KEY_LEFT;
+	keys->right = KEY_RIGHT;
+	keys->turn = KEY_UP;
+	keys->drop = KEY_DOWN;
 	keys->quit = 'q';
+	keys->pause = 'p';
+	keys->next = 1;
+	keys->level = 1;
+	keys->size_x = 10;
+	keys->size_y = 20;
 	return (keys);
 }
 
@@ -56,6 +65,7 @@ int main(int ac, char **av)
 	keys = init_keys();
 	if (keys == NULL)
 		return (84);
+	printf("KEYY (%c)\n", keys->quit);
 	return_value = parsing_input(ac, av, keys);
 	if (return_value != 0)
 		return (return_value);

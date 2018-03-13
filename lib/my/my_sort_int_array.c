@@ -16,8 +16,7 @@ void my_sort_int_array(int *tab, int size)
 			tab[i] = tab[i + 1];
 			tab[i + 1] = swap;
 			i = 0;
-		}
-		else
+		} else
 			i++;
 	}
 }

@@ -31,7 +31,16 @@
 	} piece_t;
 
 	typedef struct keys_s {
+		int left;
+		int right;
+		int turn;
+		int drop;
 		int quit;
+		int pause;
+		int next;
+		int level;
+		int size_x;
+		int size_y;
 	} keys_t;
 
 	typedef struct tetris_s {
