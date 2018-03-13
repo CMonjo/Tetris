@@ -37,6 +37,7 @@ tetris_t *create_tetris(void)
 	tetris->score = 0;
 	tetris->lines = 0;
 	tetris->level = 1;
+	tetris->display_next = 1;
 	tetris->timer = 0;
 	if (!tetris->pieces)
 		return (NULL);
