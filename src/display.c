@@ -61,6 +61,7 @@ void display_tetris(layers_t *layers, tetris_t *tetris, keys_t *keys)
 		display_layers(layers);
 		display_pieces(tetris);
 		refresh();
+		timeout(500);
 		c = wgetch(stdscr);
 		move_tetris(tetris, c);
 	}
