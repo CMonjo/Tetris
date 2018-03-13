@@ -32,6 +32,11 @@ tetris_t *create_tetris(void)
 	tetris->pos = 1;
 	tetris->actual = rand() % 6;
 	tetris->next = rand() % 6;
+	tetris->high = my_read("help/high_score.txt");
+	tetris->score = 0;
+	tetris->lines = 0;
+	tetris->level = 1;
+	tetris->timer = 0;
 	if (!tetris->pieces)
 		return (NULL);
 	return (tetris);

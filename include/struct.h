@@ -51,6 +51,11 @@
 		int pos;
 		int actual;
 		int next;
+		char *high;
+		int score;
+		int lines;
+		int level;
+		int timer;
 	} tetris_t;
 
 #endif

@@ -15,7 +15,7 @@
 // 	}
 // }
 
-int tetris_colide(tetris_t *tetris, int *x, int *y, int move)
+int tetris_colide(tetris_t *tetris, int *x, int *y)
 {
 	if (*y + tetris->pieces[tetris->actual].y > tetris->y + 1)
 		*y -= 1;
@@ -48,11 +48,10 @@ void display_tetriminos(tetris_t *tetris, int x, int y)
 	}
 }
 
-void tetris_keys(int *x, int *y, char c, int *move)
+void tetris_keys(int *x, int *y, char c)
 {
 	*y -= (c == 'z') ? 1 : 0;
 	*y += (c == 's') ? 1 : 0;
-	*move += (c == 's') ? 1 : 0;
 	*x += (c == 'd') ? 1 : 0;
 	*x -= (c == 'q') ? 1 : 0;
 }
@@ -63,14 +62,13 @@ void move_tetris(tetris_t *tetris, char c)
 	static int y = 0;
 	static int o_x = 0;
 	static int o_y = 0;
-	int move = 0;
 
 	o_x = x;
 	o_y = y;
 	y++;
 	clear_tetriminos(tetris, o_x, o_y);
-	tetris_keys(&x, &y, c, &move);
-	if (tetris_colide(tetris, &x, &y, move) == 1) {
+	tetris_keys(&x, &y, c);
+	if (tetris_colide(tetris, &x, &y) == 1) {
 		tetris->actual = tetris->next;
 		tetris->next = rand() % 6;
 		x = 8;

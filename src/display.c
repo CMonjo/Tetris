@@ -7,6 +7,42 @@
 
 #include "main.h"
 
+char *i_to_a(int number)
+{
+	char *str;
+	int i = 0;
+
+	if (number == 0) {
+		str = malloc(sizeof(char) * 2);
+		str[0] = '0';
+		str[1] = '\0';
+		return (str);
+	}
+	for (int tmp = number; tmp > 0; tmp /= 10, i++);
+	str = malloc(sizeof(char) * (i + 1));
+	str[i] = '\0';
+	i --;
+	for (int tp = number; tp > 0; tp /= 10, i--)
+		str[i] = tp % 10 + 48;
+	return (str);
+}
+
+void display_info(tetris_t *tetris, layers_t *layers)
+{
+	char *str;
+
+	mvprintw(11, 26, tetris->high);
+	str = i_to_a(tetris->score);
+	mvprintw(12, 26, str);
+	str = i_to_a(tetris->lines);
+	mvprintw(14, 26, str);
+	str = i_to_a(tetris->level);
+	mvprintw(15, 26, str);
+	str = i_to_a(tetris->timer);
+	mvprintw(17, 26, str);
+	free(str);
+}
+
 void display_layers(layers_t *layers)
 {
 	attron(COLOR_PAIR(0));
@@ -59,6 +95,7 @@ void display_tetris(layers_t *layers, tetris_t *tetris, keys_t *keys)
 	for (int c = 0; c != 'e';) {
 		clear();
 		display_layers(layers);
+		display_info(tetris, layers);
 		display_pieces(tetris);
 		refresh();
 		timeout(500);
