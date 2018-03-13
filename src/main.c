@@ -7,6 +7,14 @@
 
 #include "main.h"
 
+keys_t *init_keys(void)
+{
+	keys_t *keys = malloc(sizeof(keys_t));
+
+	keys->quit = 'q';
+	return (keys);
+}
+
 void free_tetris(layers_t *layers, tetris_t *tetris)
 {
 	for (int i = 0; layers->name[i]; i++)
@@ -37,32 +45,22 @@ void free_tetris(layers_t *layers, tetris_t *tetris)
 	free(tetris);
 }
 
-int tetris_help(int ac, char **av)
-{
-	char *help;
-
-	if (ac == 2 && (my_strcmp(av[1], "-help") == 0 ||
-	my_strcmp(av[1], "--help") == 0)) {
-		help = my_read("help/help.txt");
-		my_putstr(help);
-		free(help);
-		return (1);
-	}
-	return (0);
-}
-
 int main(int ac, char **av)
 {
 	layers_t *layers;
 	tetris_t *tetris;
 	keys_t *keys;
+	int return_value = -1;
 
 	srand(time(NULL));
-	if (tetris_help(ac, av) == 1)
-		return (0);
+	keys = init_keys();
+	if (keys == NULL)
+		return (84);
+	return_value = parsing_input(ac, av, keys);
+	if (return_value != 0)
+		return (return_value);
 	layers = fill_layers();
 	tetris = create_tetris();
-	keys = init_keys();
 	if (!layers || !tetris)
 		return (84);
 	display_tetris(layers, tetris, keys);

@@ -16,12 +16,22 @@
 		char **next;
 	} layers_t;
 
+	typedef struct settings_s {
+		char *short_name;
+		char *long_name;
+		void (*callback)();
+	} settings_t;
+
 	typedef struct piece_s {
 		int x;
 		int y;
 		int color;
 		int **piece;
 	} piece_t;
+
+	typedef struct keys_s {
+		int quit;
+	} keys_t;
 
 	typedef struct tetris_s {
 		piece_t *pieces;
@@ -32,9 +42,5 @@
 		int actual;
 		int next;
 	} tetris_t;
-
-	typedef struct keys_s {
-		int quit;
-	} keys_t;
 
 #endif

@@ -7,7 +7,7 @@
 
 CC	=	gcc
 
-CFLAGS	=	-Wall -Wextra -W -I ../../include/
+CFLAGS	=	-Wall -Wextra -W -I ../../include/ -g3
 
 SRC	=	my_strlen.c			\
 		my_putstr.c			\

@@ -7,9 +7,9 @@
 
 CC	=	gcc
 
-CFLAGS	=	-Wextra -W -Wall -I ./include/
+CFLAGS	=	-Wextra -W -Wall -I ./include/ -g3
 
-LIB	=	-L lib/ -lmy -ltools -lncurses -g3
+LIB	=	-L lib/ -lmy -ltools -lncurses
 
 SRC	=	src/main.c 		\
 		src/create_tetris.c	\
@@ -17,6 +17,8 @@ SRC	=	src/main.c 		\
 		src/display.c		\
 		src/move_tetris.c	\
 		src/tetriminos.c	\
+		src/settings.c		\
+		src/debug_mode.c	\
 		src/init_color.c
 
 OBJ	=	$(SRC:.c=.o)
