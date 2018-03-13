@@ -10,6 +10,8 @@
 void display_layers(layers_t *layers)
 {
 	attron(COLOR_PAIR(0));
+	for (int i = 0; layers->penis[i + 1]; i++)
+		mvprintw(19 + i, 24, layers->penis[i]);
 	for (int i = 0; layers->name[i + 1]; i++)
 		mvprintw(1 + i, 2, layers->name[i]);
 	for (int i = 0; layers->board[i + 1]; i++)
@@ -54,7 +56,7 @@ void display_tetris(layers_t *layers, tetris_t *tetris, keys_t *keys)
 	init_colors();
 	curs_set(0);
 	keypad(stdscr, TRUE);
-	for (int c = 0; c != keys->quit;) {
+	for (int c = 0; c != 'e';) {
 		clear();
 		display_layers(layers);
 		display_pieces(tetris);

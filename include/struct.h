@@ -14,6 +14,7 @@
 		char **score;
 		char **text;
 		char **next;
+		char **penis;
 	} layers_t;
 
 	typedef struct settings_s {
