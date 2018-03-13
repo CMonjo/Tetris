@@ -37,17 +37,19 @@
 
 	// PROTOTYPES
 
-	keys_t *init_keys(void);
-	void free_tetris(layers_t *layers, tetris_t *tetris);
-	layers_t *fill_layers(void);
-	char *my_read(char *path);
-	void display_layers(layers_t *layers);
-	void display_tetris(layers_t *layers, tetris_t *tetris, keys_t *keys);
-	piece_t *create_pieces(void);
-	tetris_t *create_tetris(void);
+	keys_t *init_keys();
+	void free_tetris();
+	layers_t *fill_layers();
+	char *my_read();
+	void display_layers();
+	void display_tetris();
+	piece_t *create_pieces();
+	tetris_t *create_tetris();
 	void move_tetris(tetris_t *tetris, char c);
-	void init_colors(void);
-	int parsing_input(int ac, char **av, keys_t *keys);
+	void display_keys();
+	void display_options();
+	void init_colors();
+	int parsing_input();
 	void set_key_quit();
 	void set_key_pause();
 	void set_map_size();

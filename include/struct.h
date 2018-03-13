@@ -20,6 +20,7 @@
 	typedef struct settings_s {
 		char *short_name;
 		char *long_name;
+		int size_name;
 		void (*callback)();
 	} settings_t;
 
@@ -37,10 +38,6 @@
 		int drop;
 		int quit;
 		int pause;
-		int next;
-		int level;
-		int size_x;
-		int size_y;
 	} keys_t;
 
 	typedef struct tetris_s {
@@ -51,6 +48,7 @@
 		int pos;
 		int actual;
 		int next;
+		int display_next;
 		char *high;
 		int score;
 		int lines;

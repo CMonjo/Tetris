@@ -17,10 +17,6 @@ keys_t *init_keys(void)
 	keys->drop = KEY_DOWN;
 	keys->quit = 'q';
 	keys->pause = 'p';
-	keys->next = 1;
-	keys->level = 1;
-	keys->size_x = 10;
-	keys->size_y = 20;
 	return (keys);
 }
 
@@ -61,16 +57,16 @@ int main(int ac, char **av)
 	keys_t *keys;
 	int return_value = -1;
 
+	(void)ac;
 	srand(time(NULL));
 	keys = init_keys();
-	if (keys == NULL)
-		return (84);
-	printf("KEYY (%c)\n", keys->quit);
-	return_value = parsing_input(ac, av, keys);
-	if (return_value != 0)
-		return (return_value);
 	layers = fill_layers();
 	tetris = create_tetris();
+	if (keys == NULL || layers == NULL || tetris == NULL)
+		return (84);
+	return_value = parsing_input(tetris, keys, av);
+	if (return_value != 0)
+		return (return_value);
 	if (!layers || !tetris)
 		return (84);
 	display_tetris(layers, tetris, keys);
