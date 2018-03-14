@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, =pdate=
+** EPITECH PROJECT, 2017
 ** Project tetris
 ** File description:
 ** Main file
@@ -69,7 +69,7 @@ int main(int ac, char **av)
 		return (return_value);
 	if (!layers || !tetris)
 		return (84);
-	display_tetris(layers, tetris, keys);
-	free_tetris(layers, tetris);
+	// display_tetris(layers, tetris, keys);
+	// free_tetris(layers, tetris);
 	return (0);
 }

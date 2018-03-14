@@ -15,6 +15,8 @@ SRC	=	my_getnbr.c	\
 		my_putstr.c	\
 		get_next_line.c	\
 		my_put_nbr.c	\
+		clear_space.c	\
+		clear_tab.c	\
 		my_str_array.c
 
 OBJ	=	$(SRC:.c=.o)

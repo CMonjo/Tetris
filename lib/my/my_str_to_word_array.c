@@ -10,58 +10,24 @@
 #include <unistd.h>
 #include "tools.h"
 
-int how_many_words(char *str, char separator)
+char **my_str_to_word_array(char *str, char c)
 {
-	int word = 1;
-	int i = 0;
+	int i = 1;
+	int mal = 0;
+	char **dest;
 
-	for (;str[i] == separator; i++);
-	for (;str[i] != '\0'; i++) {
-		if (str[i] == separator && str[i + 1]
-			!= separator && str[i + 1] != '\0')
-			word++;
+	for (int j = 0; str[j] != '\0'; j++)
+		i = str[j] == c ? i + 1 : i;
+	dest = malloc(sizeof(char *) * (i + 1));
+	for (int j = 0, k = 0; j < i; j ++, k ++, mal = 0) {
+		for (; str[k] != c && str[k] != '\0'; k ++, mal ++);
+		dest[j] = malloc(sizeof(char) * (mal + 1));
 	}
-	return (word);
-}
-
-int count_word(char *str, char separator)
-{
-	static int i = 0;
-	int k = 0;
-
-	for (; str[i] == separator; i++);
-	for (; str[i] && str[i] != separator; i++, k++);
-	if (str[i])
-		i++;
-	return (k);
-}
-
-char **fill_str(char **new_str, char *str, char separator)
-{
-	int y = 0;
-
-	for (int x = 0, i = 0, word = 0; str[i] != '\0'; y++, x = 0) {
-		word = count_word(str, separator);
-		new_str[y] = malloc(sizeof(char) * (word + 1));
-		word = 0;
-		for (; str[i] == separator; i++);
-		for (;str[i] && str[i] != separator;
-			new_str[y][x] = str[i], x++, i++);
-		if (str[i])
-			i++;
-		for (; str[i] == separator; i++);
-		new_str[y][x] = '\0';
+	for (int m = 0, k = 0, j = 0; k < i; k ++, j++, m = 0) {
+		for (; str[j] != c && str[j] != '\0'; m++, j++)
+			dest[k][m] = str[j];
+		dest[k][m] = '\0';
 	}
-	new_str[y] = NULL;
-	return (new_str);
+	dest[i] = NULL;
+	return (dest);
 }
-
-char **my_str_to_word_array(char *str, char separator)
-{
-	int nb_word = how_many_words(str, separator);
-	char **new_str;
-
-	new_str = malloc(sizeof(char *) * (nb_word + 1));
-	new_str = fill_str(new_str, str, separator);
-	return (new_str);
-} 

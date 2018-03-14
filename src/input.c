@@ -1,11 +1,17 @@
 /*
-** EPITECH PROJECT, =pdate=
+** EPITECH PROJECT, 2017
 ** Project tetris
 ** File description:
 ** Debug mode file
 */
 
 #include "main.h"
+
+void display_error(void)
+{
+	my_putstr("Error input\n");
+	exit (84);
+}
 
 char *parse_long_name(char *arg, char *tmp)
 {
@@ -49,60 +55,6 @@ void set_debug(tetris_t *tetris, keys_t *keys)
 	get_next_line(0);
 }
 
-void set_key_quit(tetris_t *tetris, keys_t *keys, char **av, int i)
-{
-	(void)tetris;
-	(void)keys;
-	(void)av;
-	(void)i;
-	my_putstr("func key quit\n");
-}
-
-void set_key_pause(tetris_t *tetris, keys_t *keys, char **av, int i)
-{
-	(void)tetris;
-	(void)keys;
-	(void)av;
-	(void)i;
-	my_putstr("func key pause\n");
-}
-
-void set_key_drop(tetris_t *tetris, keys_t *keys, char **av, int i)
-{
-	(void)tetris;
-	(void)keys;
-	(void)av;
-	(void)i;
-	my_putstr("func key drop\n");
-}
-
-void set_key_turn(tetris_t *tetris, keys_t *keys, char **av, int i)
-{
-	(void)tetris;
-	(void)keys;
-	(void)av;
-	(void)i;
-	my_putstr("func key turn\n");
-}
-
-void set_key_right(tetris_t *tetris, keys_t *keys, char **av, int i)
-{
-	(void)tetris;
-	(void)keys;
-	(void)av;
-	(void)i;
-	my_putstr("func key right\n");
-}
-
-void set_key_left(tetris_t *tetris, keys_t *keys, char **av, int i)
-{
-	(void)tetris;
-	(void)keys;
-	(void)av;
-	(void)i;
-	my_putstr("func key left\n");
-}
-
 int parsing_input(tetris_t *tetris, keys_t *keys, char **av)
 {
 	int debug = 0;
@@ -110,7 +62,8 @@ int parsing_input(tetris_t *tetris, keys_t *keys, char **av)
 	for (int i = 0; av[i] != NULL; i++) {
 		for (int j = 0; j < 11; j++) {
 			if (my_strcmp(av[i], settings[j].short_name) == 0
-			|| my_strncmp(av[i], settings[j].long_name, settings[j].size) == 0) {
+			|| my_strncmp(av[i], settings[j].long_name,
+				settings[j].size) == 0) {
 				if (my_strcmp(av[i], "-D") == 0 ||
 				my_strcmp(av[i], "--debug") == 0)
 					debug = 1;
@@ -121,7 +74,5 @@ int parsing_input(tetris_t *tetris, keys_t *keys, char **av)
 	}
 	if (debug != 0)
 		set_debug(tetris, keys);
-	else
-		get_next_line(0);
 	return (0);
 }

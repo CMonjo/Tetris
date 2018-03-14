@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, =pdate=
+** EPITECH PROJECT, 2017
 ** Project tetris
 ** File description:
 ** Main file
@@ -27,7 +27,7 @@ tetris_t *create_tetris(void)
 		return (NULL);
 	tetris->pieces = create_pieces();
 	tetris->x = 20;
-	tetris->y = 20;
+	tetris->y = 10;
 	tetris->board = create_board(tetris);
 	tetris->lose = 0;
 	tetris->actual = rand() % 6;

@@ -14,4 +14,7 @@
 	int my_getnbr(char const *str);
 	char **str_to_array(char *str, char c);
 	char *get_next_line(int fd);
+	void remove_space(char *str);
+	char *replace_tab(char *str);
+	void remove_tab(char *str);
 #endif

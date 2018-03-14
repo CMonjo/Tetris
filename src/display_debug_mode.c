@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, =pdate=
+** EPITECH PROJECT, 2017
 ** Project tetris
 ** File description:
 ** Display Debug mode file
@@ -34,7 +34,7 @@ void display_options(tetris_t *tetris)
 	my_putstr("\nLevel :	");
 	my_put_nbr(tetris->level);
 	my_putstr("\nSize :	");
-	my_put_nbr(tetris->y);
-	my_putchar('*');
 	my_put_nbr(tetris->x);
+	my_putchar('*');
+	my_put_nbr(tetris->y);
 }

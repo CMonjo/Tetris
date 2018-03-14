@@ -38,6 +38,7 @@ SRC	=	my_strlen.c			\
 		my_find_prime_sup.c		\
 		my_sort_int_array.c		\
 		my_showstr.c			\
+		my_str_to_word_array.c		\
 		disp_stdarg.c			\
 		sum_stdarg.c			\
 		my_putnbr_base.c
