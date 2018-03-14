@@ -7,6 +7,16 @@
 
 #include "main.h"
 
+void display_star_tetrimino(int x, char **pieces)
+{
+	for (int i = 1; i < x + 1; i++) {
+		if (my_strlen(pieces[i]) > x)
+			return;
+		my_putstr(pieces[i]);
+		my_putchar('\n');
+	}
+}
+
 void piece_info(char *piece)
 {
 	int j = 0;
@@ -14,21 +24,17 @@ void piece_info(char *piece)
 	char **pieces = str_to_array(piece, '\n');
 	int x = my_getnbr(numbers[1]);
 
-	printf(" : Size ");
+	my_putstr(" : Size ");
 	for (; piece[j] != ' '; j++)
-		printf("%c", piece[j]);
-	printf("*");
+		my_putchar(piece[j]);
+	my_putstr("*");
 	for (; piece[j + 1] != ' '; j++)
-		printf("%c", piece[j + 1]);
-	printf(" : Color ");
+		my_putchar(piece[j + 1]);
+	my_putstr(" : Color ");
 	for (; piece[j + 2] != '\n'; j++)
-		printf("%c", piece[j + 2]);
-	printf(" :\n");
-	for (int i = 1; i < x + 1; i++) {
-		if (my_strlen(pieces[i]) > x)
-			return;
-		printf("%s\n", pieces[i]);
-	}
+		my_putchar(piece[j + 2]);
+	my_putstr(" :\n");
+	display_star_tetrimino(x, pieces);
 }
 
 int form_error(char *piece)
@@ -74,14 +80,14 @@ int called_tetrimino(char *path)
 	int slash = 0;
 	if (piece == NULL)
 		return (84);
-	printf("Tetriminos : ");
-	printf("Name ");
+	my_putstr("Tetriminos : ");
+	my_putstr("Name ");
 	for (int i = 0; path[i] != '\0'; i++)
 		slash = (path[i] == '/') ? i + 1 : slash;
 	for (int i = slash; path[i] != '.' && path[i] != '\0'; i++)
-		printf("%c", path[i]);
+		my_putchar(path[i]);
 	if (piece_error(piece) == 84)
-		printf(" | Error\n");
+		my_putstr(" : Error\n");
 	else
 		piece_info(piece);
 	free (piece);
