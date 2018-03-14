@@ -9,19 +9,13 @@
 
 void display_keys(keys_t *keys)
 {
-	my_putstr("Key Left :	");
-	my_putchar(keys->left);
-	my_putstr("\nKey Right :	");
-	my_putchar(keys->right);
-	my_putstr("\nKey Turn :	");
-	my_putchar(keys->turn);
-	my_putstr("\nKey Drop :	");
-	my_putchar(keys->drop);
-	my_putstr("\nKey Quit :	");
-	my_putchar(keys->quit);
-	my_putstr("\nKey Pause :	");
-	my_putchar(keys->pause);
-
+	(void)keys;
+	my_putstr("Key Left : ˆEOD");
+	my_putstr("\nKey Right : ˆEOC");
+	my_putstr("\nKey Turn : (space)");
+	my_putstr("\nKey Drop : x");
+	my_putstr("\nKey Quit : q");
+	my_putstr("\nKey Pause : p");
 }
 
 void display_options(tetris_t *tetris)
