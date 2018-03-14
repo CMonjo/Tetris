@@ -103,6 +103,10 @@ void loop_tetriminos(char **path, int nb_path)
 		if (called_tetrimino(path[i]) == 84)
 			exit(84);
 	}
+	// printf("================\n");
+	// for (int i = 0; path[i] != NULL; i++)
+	// 	printf("%s\n", path[i]);
+	// printf("================\n");
 }
 
 void open_tetriminos(void)
@@ -121,6 +125,7 @@ void open_tetriminos(void)
 			nb_path++;
 		}
 	}
+	path[nb_path] = NULL;
 	closedir(dir);
 	loop_tetriminos(path, nb_path);
 }
