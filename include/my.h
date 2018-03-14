@@ -32,6 +32,7 @@
 	int my_str_isnum(char const *str);
 	int my_str_islower(char const *str);
 	int my_str_isupper(char const *str);
+	char **my_str_to_word_array(char *str, char separator);
 	int my_str_isprintable(char const *str);
 	int my_showstr(char const *str);
 	char *my_strcat(char *str1, char *str2);

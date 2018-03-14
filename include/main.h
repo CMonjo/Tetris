@@ -65,4 +65,5 @@
 	void set_map_size();
 	void set_next();
 	char *parse_long_name();
+	void display_error();
 #endif

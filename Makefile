@@ -1,8 +1,8 @@
 ##
 ## EPITECH PROJECT, 2017
-## Project =pname=
+## Project 2017
 ## File description:
-## Build =pname= binary.
+## Build tetris binary.
 ##
 
 CC	=	gcc
@@ -21,6 +21,8 @@ SRC	=	src/main.c 			\
 		src/input.c			\
 		src/display_debug_mode.c	\
 		src/set_options.c		\
+		src/set_keys_move.c		\
+		src/set_keys_option.c		\
 		src/init_color.c
 
 OBJ	=	$(SRC:.c=.o)

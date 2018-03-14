@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, =pdate=
+** EPITECH PROJECT, 2017
 ** Project tetris
 ** File description:
 ** create layers

@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, =pdate=
+** EPITECH PROJECT, 2017
 ** Project tetris
 ** File description:
 ** settings file
@@ -16,7 +16,7 @@ settings_t settings[] = {
 	{"-d", "--key-drop=", 11, &set_key_drop},
 	{"-q", "--key-quit=", 11, &set_key_quit},
 	{"-p", "--key-pause=", 12, &set_key_pause},
-	{"--map-size", "--map-size", 10, &set_map_size},
+	{"--map-size=", "--map-size=", 10, &set_map_size},
 	{"-w", "--without-next", 14, &set_next},
 	{"-D", "--debug", 7, &set_debug},
 	{0, 0, 0, NULL}
