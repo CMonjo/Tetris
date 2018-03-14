@@ -37,6 +37,7 @@
 
 	// PROTOTYPES
 
+	char *i_to_a();
 	keys_t *init_keys();
 	void free_tetris();
 	layers_t *fill_layers();

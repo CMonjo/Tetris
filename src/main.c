@@ -69,7 +69,7 @@ int main(int ac, char **av)
 		return (return_value);
 	if (!layers || !tetris)
 		return (84);
-	//display_tetris(layers, tetris);
+	display_tetris(layers, tetris);
 	//free_tetris(layers, tetris);
 	return (0);
 }
