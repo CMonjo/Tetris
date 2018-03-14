@@ -94,25 +94,33 @@ int called_tetrimino(char *path)
 	return (0);
 }
 
-int open_tetriminos(void)
+void loop_tetriminos(char **path, int nb_path)
 {
+	my_putstr("\nTetriminos : ");
+	my_put_nbr(nb_path);
 	my_putchar('\n');
-	my_putstr("Tetriminos : <size>\n");
+	for (int i = 0; i != nb_path; i++) {
+		if (called_tetrimino(path[i]) == 84)
+			exit(84);
+	}
+}
+
+void open_tetriminos(void)
+{
 	DIR *dir = NULL;
 	struct dirent *file = NULL;
-	char *path;
+	char **path = malloc(sizeof(char *) * 512);
+	int nb_path = 0;
 
 	dir = opendir("./tetriminos/");
 	if (dir == NULL)
-		return (84);
+		exit(84);
 	while ((file = readdir(dir)) != NULL) {
 		if (file->d_name[0] != '.') {
-			path = my_strcat("./tetriminos/", file->d_name);
-			if (called_tetrimino(path) == 84)
-				return (84);
-			free(path);
+			path[nb_path] = my_strcat("./tetriminos/", file->d_name);
+			nb_path++;
 		}
 	}
 	closedir(dir);
-	return (0);
+	loop_tetriminos(path, nb_path);
 }

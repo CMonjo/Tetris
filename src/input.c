@@ -52,7 +52,7 @@ void set_debug(tetris_t *tetris, keys_t *keys)
 	display_keys(keys);
 	display_options(tetris);
 	open_tetriminos();
-	my_putstr("\nPress any key to start Tetris");
+	my_putstr("Press any key to start Tetris");
 	get_next_line(0);
 }
 
