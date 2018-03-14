@@ -45,6 +45,7 @@
 		int **board;
 		int x;
 		int y;
+		int tetriminos;
 		int lose;
 		int actual;
 		int next;

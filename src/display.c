@@ -27,7 +27,7 @@ char *i_to_a(int number)
 	return (str);
 }
 
-void display_info(tetris_t *tetris, layers_t *layers)
+void display_info(tetris_t *tetris)
 {
 	char *str;
 
@@ -62,32 +62,32 @@ void display_layers(layers_t *layers)
 	attroff(COLOR_PAIR(0));
 }
 
-void display_pieces(tetris_t *tetris)
+void display_pieces(tetris_t *t)
 {
-	for (int i = 0; i < tetris->pieces[tetris->next].y; i++) {
-		for (int j = 0; j < tetris->pieces[tetris->next].x; j++) {
-			if (tetris->pieces[tetris->next].piece[i][j] != 0) {
-				attron(COLOR_PAIR(tetris->pieces[tetris->next].color));
+	for (int i = 0; i < t->pieces[t->next].y; i++) {
+		for (int j = 0; j < t->pieces[t->next].x; j++) {
+			if (t->pieces[t->next].piece[i][j] != 0) {
+				attron(COLOR_PAIR(t->pieces[t->next].color));
 				mvprintw(2 + i, 67 + j, "*");
-				attroff(COLOR_PAIR(tetris->pieces[tetris->next].color));
+				attroff(COLOR_PAIR(t->pieces[t->next].color));
 			}
 			else
 				mvprintw(2 + i, 67 + j, " ");
 		}
-	} for (int i = 0; i < tetris->y; i++) {
-		for (int j = 0; j < tetris->x; j++) {
-			if (tetris->board[i][j] == 0)
+	} for (int i = 0; i < t->y; i++) {
+		for (int j = 0; j < t->x; j++) {
+			if (t->board[i][j] == 0)
 				mvprintw(1 + i, 41 + j, " ");
 			else {
-				attron(COLOR_PAIR(tetris->board[i][j]));
+				attron(COLOR_PAIR(t->board[i][j]));
 				mvprintw(1 + i, 41 + j, "*");
-				attroff(COLOR_PAIR(tetris->board[i][j]));
+				attroff(COLOR_PAIR(t->board[i][j]));
 			}
 		}
 	}
 }
 
-void display_tetris(layers_t *layers, tetris_t *tetris, keys_t *keys)
+void display_tetris(layers_t *layers, tetris_t *tetris)
 {
 	initscr();
 	init_colors();
@@ -96,7 +96,7 @@ void display_tetris(layers_t *layers, tetris_t *tetris, keys_t *keys)
 	for (int c = 0; c != 'e' && tetris->lose == 0;) {
 		clear();
 		display_layers(layers);
-		display_info(tetris, layers);
+		display_info(tetris);
 		display_pieces(tetris);
 		refresh();
 		timeout(0.5);
