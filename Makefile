@@ -23,6 +23,7 @@ SRC	=	src/main.c 			\
 		src/set_options.c		\
 		src/set_keys_move.c		\
 		src/set_keys_option.c		\
+		src/debug_mode_tetrimino.c	\
 		src/init_color.c
 
 OBJ	=	$(SRC:.c=.o)

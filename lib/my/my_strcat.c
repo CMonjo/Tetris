@@ -5,11 +5,10 @@
 ** task 2
 */
 
+#include "tools.h"
 #include <stdlib.h>
 
-int my_strlen(char *);
-
-char	*my_strcat(char *str1, char *str2)
+char *my_strcat(char *str1, char *str2)
 {
 	int len = my_strlen(str1) + my_strlen(str2) + 1;
 	char *dest = malloc(sizeof(char) * len);
@@ -28,6 +27,5 @@ char	*my_strcat(char *str1, char *str2)
 		j ++;
 	}
 	dest[i] = '\0';
-	free(str1);
 	return (dest);
 }

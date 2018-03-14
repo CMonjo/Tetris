@@ -27,9 +27,9 @@ void display_keys(keys_t *keys)
 void display_options(tetris_t *tetris)
 {
 	my_putstr("\nNext :	");
-	if (tetris->next == 1)
+	if (tetris->display_next == 1)
 		my_putstr("Yes");
-	else if (tetris->next == 0)
+	else if (tetris->display_next == 0)
 		my_putstr("No");
 	my_putstr("\nLevel :	");
 	my_put_nbr(tetris->level);

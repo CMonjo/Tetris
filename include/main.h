@@ -66,4 +66,5 @@
 	void set_next();
 	char *parse_long_name();
 	void display_error();
+	int open_tetriminos();
 #endif
