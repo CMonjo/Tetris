@@ -102,12 +102,12 @@ int open_tetriminos(void)
 	struct dirent *file = NULL;
 	char *path;
 
-	dir = opendir("./pieces/");
+	dir = opendir("./tetriminos/");
 	if (dir == NULL)
 		return (84);
 	while ((file = readdir(dir)) != NULL) {
 		if (file->d_name[0] != '.') {
-			path = my_strcat("./pieces/", file->d_name);
+			path = my_strcat("./tetriminos/", file->d_name);
 			if (called_tetrimino(path) == 84)
 				return (84);
 			free(path);
