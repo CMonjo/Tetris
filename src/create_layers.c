@@ -55,9 +55,10 @@ layers_t *fill_layers(void)
 	layers->score = new_layer("layers/score.txt");
 	layers->next = new_layer("layers/next.txt");
 	layers->text = new_layer("layers/text.txt");
-	layers->penis = new_layer("layers/penis.txt");
-	if (!layers->name || !layers->board || !layers->score|| !layers->next\
-	|| !layers->text)
+	layers->art = new_layer("layers/art.txt");
+	layers->loooseeer = new_layer("layers/loooseeer.txt");
+	if (!layers->name || !layers->board || !layers->score|| !layers->next
+	|| !layers->text || !layers->art || !layers->loooseeer)
 		return (NULL);
 	return (layers);
 }
