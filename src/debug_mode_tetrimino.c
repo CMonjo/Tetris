@@ -10,7 +10,7 @@
 void display_star_tetrimino(int x, char **pieces)
 {
 	for (int i = 1; i < x + 1; i++) {
-		if (my_strlen(pieces[i]) > x)
+		if (my_strlen(pieces[i]) > x + 1)
 			return;
 		my_putstr(pieces[i]);
 		my_putchar('\n');
@@ -103,10 +103,6 @@ void loop_tetriminos(char **path, int nb_path)
 		if (called_tetrimino(path[i]) == 84)
 			exit(84);
 	}
-	// printf("================\n");
-	// for (int i = 0; path[i] != NULL; i++)
-	// 	printf("%s\n", path[i]);
-	// printf("================\n");
 }
 
 void open_tetriminos(void)
