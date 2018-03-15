@@ -7,17 +7,17 @@
 
 #include "main.h"
 
-void display_tetriminos(tetris_t *t, int x, int y)
-{
-	for (int i = 0; i < t->pieces[t->actual].y; i++) {
-		for (int j = 0; j < t->pieces[t->actual].x; j++) {
-			attron(COLOR_PAIR(t->pieces[t->actual].color));
-			(t->pieces[t->actual].piece[i][j] != 0)
-			? mvprintw(1 + i + y, 41 + j + x, "*") : 0;
-			attroff(COLOR_PAIR(t->pieces[t->actual].color));
-		}
-	}
-}
+// void display_tetriminos(tetris_t *t, int x, int y)
+// {
+// 	for (int i = 0; i < t->pieces[t->actual].y; i++) {
+// 		for (int j = 0; j < t->pieces[t->actual].x; j++) {
+// 			attron(COLOR_PAIR(t->pieces[t->actual].color));
+// 			(t->pieces[t->actual].piece[i][j] != 0)
+// 			? mvprintw(1 + i + y, 41 + j + x, "*") : 0;
+// 			attroff(COLOR_PAIR(t->pieces[t->actual].color));
+// 		}
+// 	}
+// }
 
 void display_info(tetris_t *tetris)
 {

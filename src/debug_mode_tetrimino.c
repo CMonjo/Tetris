@@ -61,6 +61,7 @@ int piece_error(char *piece)
 	int i = 0;
 	int space = 0;
 
+	// FIRST LINE
 	for (int j = 0; piece[j] != '\n'; j++)
 		if ((piece[j] < '0' || piece[j] > '9') && piece[j] != ' ')
 			return (84);
@@ -78,6 +79,7 @@ int called_tetrimino(char *path)
 {
 	char *piece = my_read(path);
 	int slash = 0;
+
 	if (piece == NULL)
 		return (84);
 	my_putstr("Tetriminos : ");
@@ -88,8 +90,9 @@ int called_tetrimino(char *path)
 		my_putchar(path[i]);
 	if (piece_error(piece) == 84)
 		my_putstr(" : Error\n");
-	else
+	else {
 		piece_info(piece);
+	}
 	free (piece);
 	return (0);
 }

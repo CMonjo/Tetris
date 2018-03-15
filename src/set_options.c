@@ -46,7 +46,6 @@ void set_map_size(tetris_t *tetris, keys_t *keys, char **av, int i)
 		for (; tab[k] != NULL; k++);
 		if (k != 2)
 			display_error();
-		// ATTENTION SI C'EST PAS ECRIT ={"12,12"} ça ne marche pas
 		if (tmp != NULL && my_str_isnum(tab[0]) == 1
 		&& my_str_isnum(tab[1]) == 1) {
 				tetris->x = my_getnbr(tab[0]);
