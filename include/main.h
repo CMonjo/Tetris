@@ -48,7 +48,7 @@
 	char *my_read();
 	void display_layers();
 	void display_tetris();
-	piece_t *create_pieces();
+	piece_t **create_pieces();
 	tetris_t *create_tetris();
 	void move_tetris(tetris_t *tetris, char c);
 	void display_keys();

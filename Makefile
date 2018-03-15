@@ -15,7 +15,8 @@ SRC	=	src/main.c 			\
 		src/create_tetris.c		\
 		src/create_layers.c		\
 		src/display.c			\
-		src/move_tetris.c		\
+		src/tetris_move.c		\
+		src/tetris_colide.c		\
 		src/tetriminos.c		\
 		src/settings.c			\
 		src/input.c			\

@@ -7,17 +7,19 @@
 
 #include "main.h"
 
-// void display_tetriminos(tetris_t *t, int x, int y)
-// {
-// 	for (int i = 0; i < t->pieces[t->actual].y; i++) {
-// 		for (int j = 0; j < t->pieces[t->actual].x; j++) {
-// 			attron(COLOR_PAIR(t->pieces[t->actual].color));
-// 			(t->pieces[t->actual].piece[i][j] != 0)
-// 			? mvprintw(1 + i + y, 41 + j + x, "*") : 0;
-// 			attroff(COLOR_PAIR(t->pieces[t->actual].color));
-// 		}
-// 	}
-// }
+void display_tetriminos(tetris_t *t, int x, int y)
+{
+	for (int i = 0; i < t->pieces[t->actual][t->rot].y; i++) {
+		for (int j = 0; j < t->pieces[t->actual][t->rot].x; j++) {
+			attron(COLOR_PAIR(t->pieces[t->actual][t->rot].color));
+			(t->pieces[t->actual][t->rot].piece[i][j] != 0)
+			? mvprintw(1 + i + y, 41 + j + x, "*") : 0;
+			// (t->pieces[t->actual][t->rot].piece[i][j] != 0)
+			// ? mvprintw(1, 41, "*") : 0;
+			attroff(COLOR_PAIR(t->pieces[t->actual][t->rot].color));
+		}
+	}
+}
 
 void display_info(tetris_t *tetris)
 {
@@ -56,12 +58,12 @@ void display_layers(layers_t *layers)
 
 void display_pieces(tetris_t *t)
 {
-	for (int i = 0; i < t->pieces[t->next].y; i++) {
-		for (int j = 0; j < t->pieces[t->next].x; j++) {
-			attron(COLOR_PAIR(t->pieces[t->next].color));
-			(t->pieces[t->next].piece[i][j] != 0)
+	for (int i = 0; i < t->pieces[t->next][t->n_rot].y; i++) {
+		for (int j = 0; j < t->pieces[t->next][t->n_rot].x; j++) {
+			attron(COLOR_PAIR(t->pieces[t->next][t->n_rot].color));
+			(t->pieces[t->next][t->n_rot].piece[i][j] != 0)
 			? mvprintw(2 + i, 67 + j, "*") : 0;
-			attroff(COLOR_PAIR(t->pieces[t->next].color));
+			attroff(COLOR_PAIR(t->pieces[t->next][t->n_rot].color));
 		}
 	} for (int i = 0; i < t->y; i++) {
 		for (int j = 0; j < t->x; j++) {
