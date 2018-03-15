@@ -28,7 +28,7 @@ tetris_t *create_tetris(void)
 	tetris->pieces = create_pieces();
 	tetris->x = 20;
 	tetris->y = 20;
-	tetris->tetriminos = 6;
+	tetris->tetriminos = 1;
 	tetris->board = create_board(tetris);
 	tetris->lose = 0;
 	tetris->actual = rand() % tetris->tetriminos;
