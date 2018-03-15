@@ -18,12 +18,12 @@
 		char **loooseeer;
 	} layers_t;
 
-	typedef struct settings_s {
+	typedef struct stgs_s {
 		char *short_name;
 		char *long_name;
 		int size;
 		int (*callback)();
-	} settings_t;
+	} stgs_t;
 
 	typedef struct piece_s {
 		int x;

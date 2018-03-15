@@ -7,7 +7,7 @@
 
 #include "main.h"
 
-settings_t settings[] = {
+stgs_t stgs[] = {
 	{"-h", "--help", 6, &set_help},
 	{"-L", "--level=", 8, &set_level},
 	{"-l", "--key-left=", 11, &set_key_left},

@@ -14,7 +14,7 @@ int set_level(tetris_t *tetris, keys_t *keys, char **av, int i)
 	(void)keys;
 	if (tmp == NULL)
 		return (i);
-	if (my_strncmp(av[i], settings[1].long_name, settings[1].size) == 0) {
+	if (my_strncmp(av[i], stgs[1].long_name, stgs[1].size) == 0) {
 		tmp = parse_long_name(av[i], tmp);
 		if (tmp != NULL && my_str_isnum(tmp) == 1)
 			tetris->level = my_getnbr(tmp);
@@ -46,7 +46,7 @@ int set_map_size(tetris_t *tetris, keys_t *keys, char **av, int i)
 	(void)keys;
 	if (tmp == NULL)
 		return (i);
-	if (my_strncmp(av[i], settings[8].long_name, settings[8].size) == 0) {
+	if (my_strncmp(av[i], stgs[8].long_name, stgs[8].size) == 0) {
 		tmp = parse_long_name(av[i], tmp);
 		tab = my_str_to_word_array(tmp, ',');
 		for (; tab[k] != NULL; k++);

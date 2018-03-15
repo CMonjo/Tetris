@@ -29,7 +29,7 @@
 
 	// EXTERN
 
-	extern  settings_t settings[];
+	extern  stgs_t stgs[];
 
 	// DEFINES
 

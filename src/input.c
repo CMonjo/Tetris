@@ -7,12 +7,6 @@
 
 #include "main.h"
 
-void display_error(void)
-{
-	my_putstr("Error input\n");
-	exit (84);
-}
-
 char *parse_long_name(char *arg, char *tmp)
 {
 	int j = 0;
@@ -31,7 +25,6 @@ char *parse_long_name(char *arg, char *tmp)
 	else if (bracket != 0)
 		k -= 1;
 	tmp[k] = '\0';
-		//tmp[k - 1] = '\0';
 	return (tmp);
 }
 
@@ -57,17 +50,6 @@ void init_n_keys(keys_t *keys)
 	keys->n_pause = "(space)";
 }
 
-int set_debug(tetris_t *tetris, keys_t *keys)
-{
-	my_putstr("*** DEBUG MODE ***\n");
-	display_keys(keys);
-	display_options(tetris);
-	open_tetriminos();
-	my_putstr("Press any key to start Tetris");
-	get_next_line(0);
-	return (0);
-}
-
 int parsing_input(tetris_t *tetris, keys_t *keys, char **av)
 {
 	int debug = 0;
@@ -76,14 +58,14 @@ int parsing_input(tetris_t *tetris, keys_t *keys, char **av)
 	init_n_keys(keys);
 	for (int i = 1; av[i] != NULL; i++, error_input = 0) {
 		for (int j = 0; j < 11; j++) {
-			if (my_strcmp(av[i], settings[j].short_name) == 0
-			|| my_strncmp(av[i], settings[j].long_name,
-				settings[j].size) == 0) {
+			if (my_strcmp(av[i], stgs[j].short_name) == 0
+			|| my_strncmp(av[i], stgs[j].long_name,
+				stgs[j].size) == 0) {
 				if (my_strcmp(av[i], "-D") == 0 ||
 				my_strcmp(av[i], "--debug") == 0)
 					debug = 1;
 				else {
-					i = settings[j].callback(tetris, keys, av, i);
+					i = stgs[j].callback(tetris, keys, av, i);
 					error_input = 1;
 					break;
 				}
