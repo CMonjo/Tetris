@@ -46,8 +46,19 @@ void set_help(tetris_t *tetris, keys_t *keys, char **av, int index)
 	exit (0);
 }
 
+void init_n_keys(keys_t *keys)
+{
+	keys->n_left = "ˆEOD";
+	keys->n_right = "ˆEOC";
+	keys->n_turn = "ˆEOA";
+	keys->n_drop = "ˆEOB";
+	keys->n_quit = "q";
+	keys->n_pause = "(space)";
+}
+
 void set_debug(tetris_t *tetris, keys_t *keys)
 {
+	init_n_keys(keys);
 	my_putstr("*** DEBUG MODE ***\n");
 	display_keys(keys);
 	display_options(tetris);
