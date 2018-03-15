@@ -7,45 +7,78 @@
 
 #include "main.h"
 
-void set_key_drop(tetris_t *tetris, keys_t *keys, char **av, int i)
+int set_key_drop(tetris_t *tetris, keys_t *keys, char **av, int i)
 {
 	char *tmp = malloc(sizeof(char) * (my_strlen(av[i]) + 1));
 
 	(void)tetris;
-	// VERIF MALLOC TMP
-	if (my_strncmp(av[i], settings[1].long_name, settings[1].size) == 0) {
+	if (tmp == NULL)
+		return (i);
+	if (my_strncmp(av[i], settings[5].long_name, settings[5].size) == 0) {
 		tmp = parse_long_name(av[i], tmp);
 		if (tmp != NULL)
 			keys->n_drop = tmp;
-	} else if (av[i + 1] != NULL)
+	}
+	else if (my_strcmp(av[i], settings[5].short_name) == 0 && av[i + 1] != NULL) {
 		keys->n_drop = av[i + 1];
-	if (keys->n_drop == NULL)
-		keys->n_drop = "";
+		i++;
+	}
+	return (i);
 }
 
-void set_key_turn(tetris_t *tetris, keys_t *keys, char **av, int i)
+int set_key_turn(tetris_t *tetris, keys_t *keys, char **av, int i)
 {
+	char *tmp = malloc(sizeof(char) * (my_strlen(av[i]) + 1));
+
 	(void)tetris;
-	(void)keys;
-	(void)av;
-	(void)i;
-	my_putstr("func key turn\n");
+	if (tmp == NULL)
+		return (i);
+	if (my_strncmp(av[i], settings[4].long_name, settings[4].size) == 0) {
+		tmp = parse_long_name(av[i], tmp);
+		if (tmp != NULL)
+			keys->n_turn = tmp;
+	}
+	else if (my_strcmp(av[i], settings[4].short_name) == 0 && av[i + 1] != NULL) {
+		keys->n_turn = av[i + 1];
+		i++;
+	}
+	return (i);
 }
 
-void set_key_right(tetris_t *tetris, keys_t *keys, char **av, int i)
+int set_key_right(tetris_t *tetris, keys_t *keys, char **av, int i)
 {
+	char *tmp = malloc(sizeof(char) * (my_strlen(av[i]) + 1));
+
 	(void)tetris;
-	(void)keys;
-	(void)av;
-	(void)i;
-	my_putstr("func key right\n");
+	if (tmp == NULL)
+		return (i);
+	if (my_strncmp(av[i], settings[3].long_name, settings[3].size) == 0) {
+		tmp = parse_long_name(av[i], tmp);
+		if (tmp != NULL)
+			keys->n_right = tmp;
+	}
+	else if (my_strcmp(av[i], settings[3].short_name) == 0 && av[i + 1] != NULL) {
+		keys->n_right = av[i + 1];
+		i++;
+	}
+	return (i);
 }
 
-void set_key_left(tetris_t *tetris, keys_t *keys, char **av, int i)
+int set_key_left(tetris_t *tetris, keys_t *keys, char **av, int i)
 {
+	char *tmp = malloc(sizeof(char) * (my_strlen(av[i]) + 1));
+
 	(void)tetris;
-	(void)keys;
-	(void)av;
-	(void)i;
-	my_putstr("func key left\n");
+	if (tmp == NULL)
+		return (i);
+	if (my_strncmp(av[i], settings[2].long_name, settings[2].size) == 0) {
+		tmp = parse_long_name(av[i], tmp);
+		if (tmp != NULL)
+			keys->n_left = tmp;
+	}
+	else if (my_strcmp(av[i], settings[2].short_name) == 0 && av[i + 1] != NULL) {
+		keys->n_left = av[i + 1];
+		i++;
+	}
+	return (i);
 }
