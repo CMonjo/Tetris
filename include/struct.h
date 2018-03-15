@@ -48,11 +48,13 @@
 	} keys_t;
 
 	typedef struct tetris_s {
-		piece_t *pieces;
+		piece_t **pieces;
 		int **board;
 		int x;
 		int y;
 		int tetriminos;
+		int rot;
+		int n_rot;
 		int lose;
 		int actual;
 		int next;

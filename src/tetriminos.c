@@ -35,17 +35,25 @@ piece_t info_piece(char *path)
 	return (piece);
 }
 
-piece_t *create_pieces(void)
+piece_t *create_rotation(char *path)
 {
-	piece_t *pieces = malloc(sizeof(piece_t) * 6);
+	piece_t *pieces = malloc(sizeof(piece_t) * 4);
+
+	pieces[0] = info_piece(path);
+	return (pieces);
+}
+
+piece_t **create_pieces(void)
+{
+	piece_t **pieces = malloc(sizeof(piece_t *) * 6);
 
 	if (!pieces)
 		return (NULL);
-	pieces[0] = info_piece("tetriminos/5.tetrimino");
-	pieces[1] = info_piece("tetriminos/6.tetrimino");
-	pieces[2] = info_piece("tetriminos/7.tetrimino");
-	pieces[3] = info_piece("tetriminos/bar.tetrimino");
-	pieces[4] = info_piece("tetriminos/inverted-L.tetrimino");
-	pieces[5] = info_piece("tetriminos/square.tetrimino");
+	pieces[0] = create_rotation("tetriminos/5.tetrimino");
+	pieces[1] = create_rotation("tetriminos/6.tetrimino");
+	pieces[2] = create_rotation("tetriminos/7.tetrimino");
+	pieces[3] = create_rotation("tetriminos/bar.tetrimino");
+	pieces[4] = create_rotation("tetriminos/inverted-L.tetrimino");
+	pieces[5] = create_rotation("tetriminos/square.tetrimino");
 	return (pieces);
 }
