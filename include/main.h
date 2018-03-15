@@ -37,6 +37,10 @@
 
 	// PROTOTYPES
 
+	int freeze_tetriminos();
+	int tetris_colide();
+	int tetriminos_colide();
+	void display_tetriminos();
 	char *i_to_a();
 	keys_t *init_keys();
 	void free_tetris();

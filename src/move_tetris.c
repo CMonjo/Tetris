@@ -24,10 +24,10 @@ int tetris_colide(tetris_t *tetris, int *x, int *y)
 		*y -= 1;
 	if (*y + tetris->pieces[tetris->actual].y == tetris->y + 1)
 		return (1);
-	if (*x + tetris->pieces[tetris->actual].x >= tetris->x + 1)
-		*x = *x - 1;
+	if (*x + tetris->pieces[tetris->actual].x == tetris->x + 1)
+		(*x)--;
 	if (*x < 0)
-		*x = 0;
+		(*x)++;
 	if (tetriminos_colide(tetris, x, y) == 1)
 		return (1);
 	return (0);
@@ -58,7 +58,7 @@ void tetris_gravity(int *y)
 {
 	static double timer = 0;
 
-	if (timer + 100000 < clock()) {
+	if (timer + 300000 < clock()) {
 		timer = clock();
 		(*y)++;
 	}
@@ -71,10 +71,32 @@ int freeze_tetriminos(tetris_t *tetris, int x, int y)
 			if (y + i - 1 < 0)
 				return (1);
 			if (tetris->pieces[tetris->actual].piece[i][j] != 0)
-				tetris->board[y + i - 1][x + j] = tetris->pieces[tetris->actual].piece[i][j];
+				tetris->board[y + i - 1][x + j] =
+				tetris->pieces[tetris->actual].piece[i][j];
 		}
 	}
 	return (0);
+}
+
+void fall_tetris(tetris_t *tetris, int line)
+{
+	for (int i = 1; i < line; i++) {
+		for (int j = 0; j < tetris->x; j++) {
+			tetris->board[i + 1][j] = tetris->board[i][j];
+		}
+	}
+}
+
+void breack_line(tetris_t *tetris)
+{
+	for (int i = 0, line = 0; i < tetris->y; i++, line = 0) {
+		for (int j = 0; j < tetris->x; j++)
+			line = (tetris->board[i][j] == 0) ? 1 : line;
+		if (line == 0) {
+			tetris->score += 100;
+			fall_tetris(tetris, i);
+		}
+	}
 }
 
 void move_tetris(tetris_t *tetris, char c)
@@ -92,5 +114,6 @@ void move_tetris(tetris_t *tetris, char c)
 		x = 8;
 		y = 0;
 	}
+	breack_line(tetris);
 	display_tetriminos(tetris, x, y);
 }

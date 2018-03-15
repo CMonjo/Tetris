@@ -7,24 +7,16 @@
 
 #include "main.h"
 
-char *i_to_a(int number)
+void display_tetriminos(tetris_t *t, int x, int y)
 {
-	char *str;
-	int i = 0;
-
-	if (number == 0) {
-		str = malloc(sizeof(char) * 2);
-		str[0] = '0';
-		str[1] = '\0';
-		return (str);
+	for (int i = 0; i < t->pieces[t->actual].y; i++) {
+		for (int j = 0; j < t->pieces[t->actual].x; j++) {
+			attron(COLOR_PAIR(t->pieces[t->actual].color));
+			(t->pieces[t->actual].piece[i][j] != 0)
+			? mvprintw(1 + i + y, 41 + j + x, "*") : 0;
+			attroff(COLOR_PAIR(t->pieces[t->actual].color));
+		}
 	}
-	for (int tmp = number; tmp > 0; tmp /= 10, i++);
-	str = malloc(sizeof(char) * (i + 1));
-	str[i] = '\0';
-	i --;
-	for (int tp = number; tp > 0; tp /= 10, i--)
-		str[i] = tp % 10 + 48;
-	return (str);
 }
 
 void display_info(tetris_t *tetris)
@@ -66,23 +58,17 @@ void display_pieces(tetris_t *t)
 {
 	for (int i = 0; i < t->pieces[t->next].y; i++) {
 		for (int j = 0; j < t->pieces[t->next].x; j++) {
-			if (t->pieces[t->next].piece[i][j] != 0) {
-				attron(COLOR_PAIR(t->pieces[t->next].color));
-				mvprintw(2 + i, 67 + j, "*");
-				attroff(COLOR_PAIR(t->pieces[t->next].color));
-			}
-			else
-				mvprintw(2 + i, 67 + j, " ");
+			attron(COLOR_PAIR(t->pieces[t->next].color));
+			(t->pieces[t->next].piece[i][j] != 0)
+			? mvprintw(2 + i, 67 + j, "*") : 0;
+			attroff(COLOR_PAIR(t->pieces[t->next].color));
 		}
 	} for (int i = 0; i < t->y; i++) {
 		for (int j = 0; j < t->x; j++) {
-			if (t->board[i][j] == 0)
-				mvprintw(1 + i, 41 + j, " ");
-			else {
-				attron(COLOR_PAIR(t->board[i][j]));
-				mvprintw(1 + i, 41 + j, "*");
-				attroff(COLOR_PAIR(t->board[i][j]));
-			}
+			attron(COLOR_PAIR(t->board[i][j]));
+			(t->board[i][j] != 0)
+			? mvprintw(1 + i, 41 + j, "*") : 0;
+			attroff(COLOR_PAIR(t->board[i][j]));
 		}
 	}
 }

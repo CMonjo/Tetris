@@ -19,12 +19,8 @@ int **create_board(tetris_t *tetris)
 	return (board);
 }
 
-tetris_t *create_tetris(void)
+void set_tetris(tetris_t *tetris)
 {
-	tetris_t *tetris = malloc(sizeof(tetris_t));
-
-	if (!tetris)
-		return (NULL);
 	tetris->pieces = create_pieces();
 	tetris->x = 20;
 	tetris->y = 20;
@@ -40,6 +36,15 @@ tetris_t *create_tetris(void)
 	tetris->level = 1;
 	tetris->display_next = 1;
 	tetris->timer = 0;
+}
+
+tetris_t *create_tetris(void)
+{
+	tetris_t *tetris = malloc(sizeof(tetris_t));
+
+	if (!tetris)
+		return (NULL);
+	set_tetris(tetris);
 	if (!tetris->pieces)
 		return (NULL);
 	return (tetris);
