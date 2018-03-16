@@ -7,6 +7,30 @@
 
 #include "main.h"
 
+void tetriminos_alpha(char **path, int nb_path)
+{
+	// ATTENTION J'AI LAISSE STRCPY SANS LE MY POUR TESTER
+	char *tmp = malloc(sizeof(char) * 12345678);
+	int i = 0;
+	int j = 0;
+
+	for (int k = 0; path[k] != NULL; k++)
+		printf("%s\n", path[k]);
+	for (; i < nb_path; i++) {
+		for (j = 0; j < nb_path; j++) {
+			if (strcmp(path[i], path[j]) < 0) {
+				strcpy(tmp, path[i]);
+				strcpy(path[i], path[j]);
+				strcpy(path[j], tmp);
+			}
+		}
+	}
+	printf("===========\n");
+	for (i = 0; i < nb_path; i++)
+		printf("%s\n", path[i]);
+	printf("===========\n");
+}
+
 void display_star_tetrimino(int x, char **pieces)
 {
 	for (int i = 1; i < x + 1; i++) {
@@ -80,6 +104,7 @@ int called_tetrimino(char *path)
 	char *piece = my_read(path);
 	int slash = 0;
 
+	printf("path [%s]\n", path);
 	if (piece == NULL)
 		return (84);
 	my_putstr("Tetriminos : ");
@@ -102,6 +127,9 @@ void loop_tetriminos(char **path, int nb_path)
 	my_putstr("\nTetriminos : ");
 	my_put_nbr(nb_path);
 	my_putchar('\n');
+
+	//tetriminos_alpha(path, nb_path);
+
 	for (int i = 0; i != nb_path; i++) {
 		if (called_tetrimino(path[i]) == 84)
 			exit(84);

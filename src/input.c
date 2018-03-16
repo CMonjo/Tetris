@@ -34,7 +34,9 @@ int set_help(tetris_t *tetris, keys_t *keys, char **av, int index)
 
 	(void)tetris;
 	(void)keys;
-	(void)av;
+	my_putstr("Usage: ");
+	my_putstr(av[0]);
+	my_putstr(" [options]\n");
 	my_putstr(help);
 	free(help);
 	exit (index);
