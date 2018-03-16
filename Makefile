@@ -11,21 +11,21 @@ CFLAGS	=	-Wextra -W -Wall -I ./include/ -g3
 
 LIB	=	-L lib/ -lmy -ltools -lncurses
 
-SRC	=	src/main.c 			\
-		src/create_tetris.c		\
-		src/create_layers.c		\
-		src/display.c			\
-		src/tetris_move.c		\
-		src/tetris_colide.c		\
-		src/tetriminos.c		\
-		src/settings.c			\
-		src/input.c			\
-		src/display_debug_mode.c	\
-		src/set_options.c		\
-		src/set_keys_move.c		\
-		src/set_keys_option.c		\
-		src/debug_mode_tetrimino.c	\
-		src/init_color.c
+SRC	=	src/main.c 				\
+		src/create_tetris.c			\
+		src/create_layers.c			\
+		src/display.c				\
+		src/tetris_move.c			\
+		src/tetris_colide.c			\
+		src/tetriminos.c			\
+		src/init_color.c			\
+		src/settings.c				\
+		src/debug/input.c			\
+		src/debug/display_debug_mode.c		\
+		src/debug/set_options.c			\
+		src/debug/set_keys_move.c		\
+		src/debug/set_keys_option.c		\
+		src/debug/debug_mode_tetrimino.c
 
 OBJ	=	$(SRC:.c=.o)
 
