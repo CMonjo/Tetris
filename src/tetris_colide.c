@@ -27,25 +27,32 @@ int tetris_colide(tetris_t *tetris, int *x, int *y)
 		*y -= 1;
 	if (*y + tetris->pieces[tetris->actual][tetris->rot].y == tetris->y + 1)
 		return (1);
-	if (*x + tetris->pieces[tetris->actual][tetris->rot].x == tetris->x + 1)
-		(*x)--;
-	if (*x < 0)
-		(*x)++;
+	(*x + tetris->pieces[tetris->actual][tetris->rot].x == tetris->x + 1)
+	? (*x)-- : 0;
+	(*x < 0) ? (*x)++ : 0;
 	if (tetriminos_colide(tetris, x, y) == 1)
 		return (1);
+	return (0);
+}
+
+int freeeze_tetris(tetris_t *t, int x, int y, int i)
+{
+	for (int j = 0; j < t->pieces[t->actual][t->rot].x; j++) {
+		if (y + i - 1 < 0)
+			return (1);
+		if (t->pieces[t->actual][t->rot].piece[i][j] != 0) {
+			t->board[y + i - 1][x + j] =
+			t->pieces[t->actual][t->rot].piece[i][j];
+		}
+	}
 	return (0);
 }
 
 int freeze_tetriminos(tetris_t *t, int x, int y)
 {
 	for (int i = 0; i < t->pieces[t->actual][t->rot].y; i++) {
-		for (int j = 0; j < t->pieces[t->actual][t->rot].x; j++) {
-			if (y + i - 1 < 0)
-				return (1);
-			if (t->pieces[t->actual][t->rot].piece[i][j] != 0)
-				t->board[y + i - 1][x + j] =
-				t->pieces[t->actual][t->rot].piece[i][j];
-		}
+		if (freeeze_tetris(t, x, y, i) == 1)
+			return (1);
 	}
 	return (0);
 }

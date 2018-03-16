@@ -14,8 +14,6 @@ void display_tetriminos(tetris_t *t, int x, int y)
 			attron(COLOR_PAIR(t->pieces[t->actual][t->rot].color));
 			(t->pieces[t->actual][t->rot].piece[i][j] != 0)
 			? mvprintw(1 + i + y, 41 + j + x, "*") : 0;
-			// (t->pieces[t->actual][t->rot].piece[i][j] != 0)
-			// ? mvprintw(1, 41, "*") : 0;
 			attroff(COLOR_PAIR(t->pieces[t->actual][t->rot].color));
 		}
 	}
@@ -93,9 +91,6 @@ void display_tetris(layers_t *layers, tetris_t *tetris)
 	} for (int c = 0; c != 'e';) {
 		c = wgetch(stdscr);
 		clear();
-		display_layers(layers);
-		display_info(tetris);
-		display_pieces(tetris);
 		for (int i = 0; layers->loooseeer[i + 1]; i++)
 			mvprintw(1 + i, 2, layers->loooseeer[i]);
 		refresh();
