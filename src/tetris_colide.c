@@ -36,18 +36,18 @@ void x_colide(tetris_t *t, int *x, int *y)
 		(*x)--;
 	if (*x < 0)
 		(*x)++;
-	// for (int i = 0, col = 0; i < t->pieces[t->actual][t->rot].y; i++, col++) {
-	// 	for (int j = 0; j < t->pieces[t->actual][t->rot].x; j++) {
-	// 		col = (t->pieces[t->actual][t->rot].piece[i][j] != 0)
-	// 		? j : col;
-	// 	}
-	// 	if (*x + col < t->x && t->board[*y + i][*x + col] != 0) {
-	// 		(*x)--;
-	// 		return;
-	// 	}
-	// }
 }
 
+// for (int i = 0, col = 0; i < t->pieces[t->actual][t->rot].y; i++, col++) {
+// 	for (int j = 0; j < t->pieces[t->actual][t->rot].x; j++) {
+// 		col = (t->pieces[t->actual][t->rot].piece[i][j] != 0)
+// 		? j : col;
+// 	}
+// 	if (*x + col < t->x && t->board[*y + i][*x + col] != 0) {
+// 		(*x)--;
+// 		return;
+// 	}
+// }
 
 int tetris_colide(tetris_t *tetris, int *x, int *y)
 {

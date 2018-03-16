@@ -44,6 +44,19 @@ char **new_layer(char *path)
 	return (array);
 }
 
+char *new_board(char *path)
+{
+	char *str = my_read(path);
+	char *board = malloc(sizeof(char) * 7);
+
+	for (int i = 0; i < 5; i++)
+		board[i] = str[i + 2];
+	board[4] = str[0];
+	board[5] = str[1];
+	board[6] = '\0';
+	return (board);
+}
+
 layers_t *fill_layers(void)
 {
 	layers_t *layers = malloc(sizeof(layers_t));
@@ -51,9 +64,9 @@ layers_t *fill_layers(void)
 	if (!layers)
 		return (NULL);
 	layers->name = new_layer("layers/name.txt");
-	layers->board = new_layer("layers/board.txt");
+	layers->board = new_board("layers/board.txt");
 	layers->score = new_layer("layers/score.txt");
-	layers->next = new_layer("layers/next.txt");
+	layers->next = new_board("layers/next.txt");
 	layers->text = new_layer("layers/text.txt");
 	layers->art = new_layer("layers/art.txt");
 	layers->loooseeer = new_layer("layers/loooseeer.txt");

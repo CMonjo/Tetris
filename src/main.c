@@ -36,6 +36,11 @@ keys_t *init_keys(void)
 	keys->n_turn = "ˆEOA";
 	keys->n_drop = "ˆEOB";
 	keys->n_quit = "q";
+	keys->n_left = "q";
+	keys->n_right = "d";
+	keys->n_turn = "r";
+	keys->n_drop = "s";
+	keys->n_quit = "e";
 	keys->n_pause = "(space)";
 	keys->debug = 0;
 	keys->error_input = 0;
@@ -48,14 +53,10 @@ void free_tetris(layers_t *layers, tetris_t *tetris)
 	for (int i = 0; layers->name[i]; i++)
 		free(layers->name[i]);
 	free(layers->name);
-	for (int i = 0; layers->board[i]; i++)
-		free(layers->board[i]);
 	free(layers->board);
 	for (int i = 0; layers->score[i]; i++)
 		free(layers->score[i]);
 	free(layers->score);
-	for (int i = 0; layers->next[i]; i++)
-		free(layers->next[i]);
 	free(layers->next);
 	for (int i = 0; layers->text[i]; i++)
 		free(layers->text[i]);

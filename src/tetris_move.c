@@ -54,9 +54,10 @@ void breack_line(tetris_t *tetris)
 
 void move_tetris(tetris_t *tetris, char c)
 {
-	static int x = 8;
+	static int x = 0;
 	static int y = 0;
 
+	x = (x == 0) ? tetris->x / 2 : x;
 	tetris_gravity(tetris, &y);
 	tetris_keys(tetris, &x, &y, c);
 	if (tetris_colide(tetris, &x, &y) == 1) {
@@ -66,7 +67,7 @@ void move_tetris(tetris_t *tetris, char c)
 		tetris->next = rand() % tetris->tetriminos;
 		tetris->rot = tetris->n_rot;
 		tetris->n_rot = rand() % 4;
-		x = 8;
+		x = 0;
 		y = 0;
 	}
 	breack_line(tetris);

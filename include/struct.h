@@ -10,10 +10,10 @@
 
 	typedef struct layers_s {
 		char **name;
-		char **board;
+		char *board;
 		char **score;
 		char **text;
-		char **next;
+		char *next;
 		char **art;
 		char **loooseeer;
 	} layers_t;
