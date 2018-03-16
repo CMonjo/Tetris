@@ -7,29 +7,53 @@
 
 #include "main.h"
 
-int tetriminos_colide(tetris_t *trs, int *x, int *y)
+int tetriminos_colide(tetris_t *t, int *x, int *y)
 {
-	for (int i = 0, l = 0; i < trs->pieces[trs->actual][trs->rot].x;
+	for (int i = 0, l = 0; i < t->pieces[t->actual][t->rot].x;
 	i++, l = 0) {
-		for (int j = 0; j < trs->pieces[trs->actual][trs->rot].y; j++) {
-			l = (trs->pieces[trs->actual][trs->rot].piece[j][i]
+		for (int j = 0; j < t->pieces[t->actual][t->rot].y; j++) {
+			l = (t->pieces[t->actual][t->rot].piece[j][i]
 			!= 0) ? j : l;
 		}
-		if (trs->board[*y + l][*x + i] != 0)
+		if (t->board[*y + l][*x + i] != 0)
 			return (1);
 	}
 	return (0);
 }
 
+int y_colide(tetris_t *t, int *y)
+{
+	if (*y + t->pieces[t->actual][t->rot].y > t->y + 1)
+		*y -= 1;
+	if (*y + t->pieces[t->actual][t->rot].y == t->y + 1)
+		return (1);
+	return (0);
+}
+
+void x_colide(tetris_t *t, int *x, int *y)
+{
+	if (*x + t->pieces[t->actual][t->rot].x == t->x + 1)
+		(*x)--;
+	if (*x < 0)
+		(*x)++;
+	// for (int i = 0, col = 0; i < t->pieces[t->actual][t->rot].y; i++, col++) {
+	// 	for (int j = 0; j < t->pieces[t->actual][t->rot].x; j++) {
+	// 		col = (t->pieces[t->actual][t->rot].piece[i][j] != 0)
+	// 		? j : col;
+	// 	}
+	// 	if (*x + col < t->x && t->board[*y + i][*x + col] != 0) {
+	// 		(*x)--;
+	// 		return;
+	// 	}
+	// }
+}
+
+
 int tetris_colide(tetris_t *tetris, int *x, int *y)
 {
-	if (*y + tetris->pieces[tetris->actual][tetris->rot].y > tetris->y + 1)
-		*y -= 1;
-	if (*y + tetris->pieces[tetris->actual][tetris->rot].y == tetris->y + 1)
+	if (y_colide(tetris, y) == 1)
 		return (1);
-	(*x + tetris->pieces[tetris->actual][tetris->rot].x == tetris->x + 1)
-	? (*x)-- : 0;
-	(*x < 0) ? (*x)++ : 0;
+	x_colide(tetris, x, y);
 	if (tetriminos_colide(tetris, x, y) == 1)
 		return (1);
 	return (0);

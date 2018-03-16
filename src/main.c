@@ -35,7 +35,11 @@ keys_t *init_keys(void)
 	keys->n_right = "ˆEOC";
 	keys->n_turn = "ˆEOA";
 	keys->n_drop = "ˆEOB";
-	keys->n_quit = "q";
+	keys->n_left = "q";
+	keys->n_right = "d";
+	keys->n_turn = "r";
+	keys->n_drop = "s";
+	keys->n_quit = "e";
 	keys->n_pause = "(space)";
 	return (keys);
 }
@@ -95,6 +99,7 @@ int main(int ac, char **av)
 	return_value = parsing_input(tetris, tetris->keys, av);
 	if (return_value != 0)
 		return (return_value);
+	tetris->board = create_board(tetris);
 	display_tetris(layers, tetris);
 	//free_tetris(layers, tetris);
 	return (0);
