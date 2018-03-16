@@ -39,6 +39,9 @@
 		char *n_drop;
 		char *n_quit;
 		char *n_pause;
+		int debug;
+		int error_input;
+		int my_break;
 	} keys_t;
 
 	typedef struct tetris_s {

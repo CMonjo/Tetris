@@ -7,7 +7,7 @@
 
 #include "main.h"
 
-int set_level(tetris_t *tetris, char **av, int i)
+int set_level(tetris_t *tetris, keys_t *keys, char **av, int i)
 {
 	char *tmp = malloc(sizeof(char) * (my_strlen(av[i]) + 1));
 
@@ -34,7 +34,7 @@ int set_next(tetris_t *tetris, keys_t *keys, char **av, int i)
 	return (i);
 }
 
-int set_map_size(tetris_t *tetris, char **av, int i)
+int set_map_size(tetris_t *tetris, keys_t *keys, char **av, int i)
 {
 	char *tmp = malloc(sizeof(char) * (my_strlen(av[i]) + 1));
 	char **tab;
