@@ -37,6 +37,9 @@ keys_t *init_keys(void)
 	keys->n_drop = "ˆEOB";
 	keys->n_quit = "q";
 	keys->n_pause = "(space)";
+	keys->debug = 0;
+	keys->error_input = 0;
+	keys->my_break = 0;
 	return (keys);
 }
 
