@@ -57,6 +57,8 @@ void move_tetris(tetris_t *tetris, char c)
 			tetris->lose = 1;
 		tetris->actual = tetris->next;
 		tetris->next = rand() % tetris->tetriminos;
+		tetris->rot = tetris->n_rot;
+		tetris->n_rot = rand() % 4;
 		x = 8;
 		y = 0;
 	}

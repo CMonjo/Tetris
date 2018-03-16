@@ -35,6 +35,18 @@ piece_t info_piece(char *path)
 	return (piece);
 }
 
+void create_90_degrees(piece_t *pieces)
+{
+	pieces[1].piece = malloc(sizeof(int *) * pieces[1].y);
+	for (int i = 0; i < pieces[1].y; i++) {
+		pieces[1].piece[i] = malloc(sizeof(int) * pieces[1].x);
+		for (int j = 0; j < pieces[1].x; j++) {
+			pieces[1].piece[i][j] =
+			pieces[0].piece[pieces[0].y - 1 - j][i];
+		}
+	}
+}
+
 void create_180_degrees(piece_t *pieces)
 {
 	pieces[2].piece = malloc(sizeof(int *) * pieces[2].y);
@@ -42,7 +54,50 @@ void create_180_degrees(piece_t *pieces)
 		pieces[2].piece[i] = malloc(sizeof(int) * pieces[2].x);
 		for (int j = 0; j < pieces[2].x; j++) {
 			pieces[2].piece[i][j] =
-			pieces[0].piece[pieces[2].y - 1 - i][j];
+			pieces[0].piece[pieces[0].y - 1 - i][j];
+		}
+	}
+}
+
+void create_270_degrees(piece_t *pieces)
+{
+	pieces[3].piece = malloc(sizeof(int *) * pieces[3].y);
+	for (int i = 0; i < pieces[3].y; i++) {
+		pieces[3].piece[i] = malloc(sizeof(int) * pieces[3].x);
+		for (int j = 0; j < pieces[3].x; j++) {
+			printf("%d\n", pieces[0].piece[pieces[0].x - 1 - i][j]);
+			pieces[3].piece[i][j] =
+			pieces[0].piece[pieces[0].x - 1 - i][j];
+		}
+		printf("\n");
+	}
+	exit(0);
+}
+
+void create_rotate(piece_t *pieces)
+{
+	pieces[1].piece = malloc(sizeof(int *) * pieces[1].y);
+	for (int i = 0; i < pieces[1].y; i++) {
+		pieces[1].piece[i] = malloc(sizeof(int) * pieces[1].x);
+		for (int j = 0; j < pieces[1].x; j++) {
+			pieces[1].piece[i][j] =
+			pieces[0].piece[pieces[0].y - 1 - j][i];
+		}
+	}
+	pieces[2].piece = malloc(sizeof(int *) * pieces[2].y);
+	for (int i = 0; i < pieces[2].y; i++) {
+		pieces[2].piece[i] = malloc(sizeof(int) * pieces[2].x);
+		for (int j = 0; j < pieces[2].x; j++) {
+			pieces[2].piece[i][j] =
+			pieces[1].piece[pieces[1].y - 1 - j][i];
+		}
+	}
+	pieces[3].piece = malloc(sizeof(int *) * pieces[3].y);
+	for (int i = 0; i < pieces[3].y; i++) {
+		pieces[3].piece[i] = malloc(sizeof(int) * pieces[3].x);
+		for (int j = 0; j < pieces[3].x; j++) {
+			pieces[3].piece[i][j] =
+			pieces[2].piece[pieces[2].y - 1 - j][i];
 		}
 	}
 }
@@ -62,9 +117,10 @@ piece_t *create_rotation(char *path)
 			pieces[i].y = pieces[0].x;
 		}
 	}
-	//create_90_degrees(pieces);
-	create_180_degrees(pieces);
-	//create_270_degrees(pieces);
+	create_rotate(pieces);
+	// create_90_degrees(pieces);
+	// create_180_degrees(pieces);
+	// create_270_degrees(pieces);
 	return (pieces);
 }
 
