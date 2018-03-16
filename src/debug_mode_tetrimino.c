@@ -104,7 +104,7 @@ int called_tetrimino(char *path)
 	char *piece = my_read(path);
 	int slash = 0;
 
-	printf("path [%s]\n", path);
+	//printf("path [%s]\n", path);
 	if (piece == NULL)
 		return (84);
 	my_putstr("Tetriminos : ");
