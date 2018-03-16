@@ -33,23 +33,18 @@
 	} piece_t;
 
 	typedef struct keys_s {
-		int left;
 		char *n_left;
-		int right;
 		char *n_right;
-		int turn;
 		char *n_turn;
-		int drop;
 		char *n_drop;
-		int quit;
 		char *n_quit;
-		int pause;
 		char *n_pause;
 	} keys_t;
 
 	typedef struct tetris_s {
 		piece_t **pieces;
 		int **board;
+		keys_t *keys;
 		int x;
 		int y;
 		int tetriminos;

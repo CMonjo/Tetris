@@ -22,6 +22,7 @@ int **create_board(tetris_t *tetris)
 void set_tetris(tetris_t *tetris)
 {
 	tetris->pieces = create_pieces();
+	tetris->keys = init_keys();
 	tetris->x = 20;
 	tetris->y = 20;
 	tetris->tetriminos = 6;

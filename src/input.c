@@ -42,22 +42,11 @@ int set_help(tetris_t *tetris, keys_t *keys, char **av, int index)
 	exit (index);
 }
 
-void init_n_keys(keys_t *keys)
-{
-	keys->n_left = "ˆEOD";
-	keys->n_right = "ˆEOC";
-	keys->n_turn = "ˆEOA";
-	keys->n_drop = "ˆEOB";
-	keys->n_quit = "q";
-	keys->n_pause = "(space)";
-}
-
 int parsing_input(tetris_t *tetris, keys_t *keys, char **av)
 {
 	int debug = 0;
 	int error_input = 0;
 
-	init_n_keys(keys);
 	for (int i = 1; av[i] != NULL; i++, error_input = 0) {
 		for (int j = 0; j < 11; j++) {
 			if (my_strcmp(av[i], stgs[j].short_name) == 0

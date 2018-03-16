@@ -79,7 +79,7 @@ void display_tetris(layers_t *layers, tetris_t *tetris)
 	init_colors();
 	curs_set(0);
 	keypad(stdscr, TRUE);
-	for (int c = 0; c != 'e' && tetris->lose == 0;) {
+	for (char c = 0; c != tetris->keys->n_quit[0] && tetris->lose == 0;) {
 		timeout(0.5);
 		c = wgetch(stdscr);
 		clear();
@@ -88,7 +88,7 @@ void display_tetris(layers_t *layers, tetris_t *tetris)
 		display_pieces(tetris);
 		move_tetris(tetris, c);
 		refresh();
-	} for (int c = 0; c != 'e';) {
+	} for (int c = 0; c != tetris->keys->n_quit[0];) {
 		c = wgetch(stdscr);
 		clear();
 		for (int i = 0; layers->loooseeer[i + 1]; i++)

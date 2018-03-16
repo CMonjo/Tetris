@@ -7,12 +7,13 @@
 
 #include "main.h"
 
-void tetris_keys(int *x, int *y, char c)
+void tetris_keys(tetris_t *tetris, int *x, int *y, char c)
 {
-	*y -= (c == 'z') ? 1 : 0;
-	*y += (c == 's') ? 1 : 0;
-	*x += (c == 'd') ? 1 : 0;
-	*x -= (c == 'q') ? 1 : 0;
+	tetris->rot += (c == tetris->keys->n_turn[0]) ? 1 : 0;
+	tetris->rot = (tetris->rot > 3) ? 0 : tetris->rot;
+	*y += (c == tetris->keys->n_drop[0]) ? 1 : 0;
+	*x += (c == tetris->keys->n_right[0]) ? 1 : 0;
+	*x -= (c == tetris->keys->n_left[0]) ? 1 : 0;
 }
 
 void tetris_gravity(tetris_t *tetris, int *y)
@@ -57,7 +58,7 @@ void move_tetris(tetris_t *tetris, char c)
 	static int y = 0;
 
 	tetris_gravity(tetris, &y);
-	tetris_keys(&x, &y, c);
+	tetris_keys(tetris, &x, &y, c);
 	if (tetris_colide(tetris, &x, &y) == 1) {
 		if (freeze_tetriminos(tetris, x, y) == 1)
 			tetris->lose = 1;
