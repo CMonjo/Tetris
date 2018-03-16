@@ -25,7 +25,7 @@ void set_tetris(tetris_t *tetris)
 	tetris->x = 20;
 	tetris->y = 20;
 	tetris->tetriminos = 6;
-	tetris->rot = 0;
+	tetris->rot = 2;
 	tetris->n_rot = 0;
 	tetris->board = create_board(tetris);
 	tetris->lose = 0;

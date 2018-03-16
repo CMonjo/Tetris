@@ -35,11 +35,36 @@ piece_t info_piece(char *path)
 	return (piece);
 }
 
+void create_180_degrees(piece_t *pieces)
+{
+	pieces[2].piece = malloc(sizeof(int *) * pieces[2].y);
+	for (int i = 0; i < pieces[2].y; i++) {
+		pieces[2].piece[i] = malloc(sizeof(int) * pieces[2].x);
+		for (int j = 0; j < pieces[2].x; j++) {
+			pieces[2].piece[i][j] =
+			pieces[0].piece[pieces[2].y - 1 - i][j];
+		}
+	}
+}
+
 piece_t *create_rotation(char *path)
 {
 	piece_t *pieces = malloc(sizeof(piece_t) * 4);
 
 	pieces[0] = info_piece(path);
+	for (int i = 1; i < 4; i++) {
+		pieces[i].color = pieces[0].color;
+		if (i == 2) {
+			pieces[i].x = pieces[0].x;
+			pieces[i].y = pieces[0].y;
+		} else {
+			pieces[i].x = pieces[0].y;
+			pieces[i].y = pieces[0].x;
+		}
+	}
+	//create_90_degrees(pieces);
+	create_180_degrees(pieces);
+	//create_270_degrees(pieces);
 	return (pieces);
 }
 
@@ -49,11 +74,11 @@ piece_t **create_pieces(void)
 
 	if (!pieces)
 		return (NULL);
-	pieces[0] = create_rotation("tetriminos/5.tetrimino");
-	pieces[1] = create_rotation("tetriminos/6.tetrimino");
-	pieces[2] = create_rotation("tetriminos/7.tetrimino");
-	pieces[3] = create_rotation("tetriminos/bar.tetrimino");
-	pieces[4] = create_rotation("tetriminos/inverted-L.tetrimino");
-	pieces[5] = create_rotation("tetriminos/square.tetrimino");
+	pieces[0] = create_rotation("pieces/5.tetrimino");
+	pieces[1] = create_rotation("pieces/6.tetrimino");
+	pieces[2] = create_rotation("pieces/7.tetrimino");
+	pieces[3] = create_rotation("pieces/bar.tetrimino");
+	pieces[4] = create_rotation("pieces/inverted-L.tetrimino");
+	pieces[5] = create_rotation("pieces/square.tetrimino");
 	return (pieces);
 }
