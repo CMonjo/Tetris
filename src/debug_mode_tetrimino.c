@@ -7,28 +7,15 @@
 
 #include "main.h"
 
-void tetriminos_alpha(char **path, int nb_path)
+int check_extension_file(char *path)
 {
-	// ATTENTION J'AI LAISSE STRCPY SANS LE MY POUR TESTER
-	char *tmp = malloc(sizeof(char) * 12345678);
-	int i = 0;
-	int j = 0;
+	char *tetri = "onimirtet.";
+	int check = 0;
 
-	for (int k = 0; path[k] != NULL; k++)
-		printf("%s\n", path[k]);
-	for (; i < nb_path; i++) {
-		for (j = 0; j < nb_path; j++) {
-			if (strcmp(path[i], path[j]) < 0) {
-				strcpy(tmp, path[i]);
-				strcpy(path[i], path[j]);
-				strcpy(path[j], tmp);
-			}
-		}
-	}
-	printf("===========\n");
-	for (i = 0; i < nb_path; i++)
-		printf("%s\n", path[i]);
-	printf("===========\n");
+	path = my_revstr(path);
+	check = my_strncmp(tetri, path, 10);
+	path = my_revstr(path);
+	return (check);
 }
 
 void display_star_tetrimino(int x, char **pieces)
@@ -104,7 +91,6 @@ int called_tetrimino(char *path)
 	char *piece = my_read(path);
 	int slash = 0;
 
-	//printf("path [%s]\n", path);
 	if (piece == NULL)
 		return (84);
 	my_putstr("Tetriminos : ");
@@ -122,16 +108,49 @@ int called_tetrimino(char *path)
 	return (0);
 }
 
+void swap_path(char **cpy, char *tmp, int i, int nb_path)
+{
+	for (int j = 0; j < nb_path; j++) {
+		if (my_strcmp(cpy[i], cpy[j]) < 0) {
+			my_strcpy(tmp, cpy[i]);
+			my_strcpy(cpy[i], cpy[j]);
+			my_strcpy(cpy[j], tmp);
+		}
+	}
+}
+
+char **tetriminos_alpha(char **path, int nb_path, int len)
+{
+	char *tmp = malloc(sizeof(char) * (len + 10));
+	char **cpy = malloc(sizeof(char *) * (nb_path + 1));
+
+	for (int k = 0; k != nb_path; k++) {
+		cpy[k] = malloc(sizeof(char) * (len + 10));
+		my_strcpy(cpy[k], path[k]);
+		cpy[k + 1] = NULL;
+	}
+	for (int i = 0; i < nb_path; i++)
+		swap_path(cpy, tmp, i, nb_path);
+	return (cpy);
+}
+
 void loop_tetriminos(char **path, int nb_path)
 {
+	int len = 0;
+	int tmp = 0;
+	char **cpy;
+
 	my_putstr("\nTetriminos : ");
 	my_put_nbr(nb_path);
 	my_putchar('\n');
-
-	//tetriminos_alpha(path, nb_path);
-
+	for (int k = 0; path[k] != NULL; k++) {
+		tmp = my_strlen(path[k]);
+		if (tmp > len)
+			len = tmp;
+	}
+	cpy = tetriminos_alpha(path, nb_path, len);
 	for (int i = 0; i != nb_path; i++) {
-		if (called_tetrimino(path[i]) == 84)
+		if (called_tetrimino(cpy[i]) == 84)
 			exit(84);
 	}
 }
@@ -142,12 +161,14 @@ void open_tetriminos(void)
 	struct dirent *file = NULL;
 	char **path = malloc(sizeof(char *) * 512);
 	int nb_path = 0;
+	int extension = 0;
 
 	dir = opendir("./tetriminos/");
 	if (dir == NULL)
 		exit(84);
 	while ((file = readdir(dir)) != NULL) {
-		if (file->d_name[0] != '.') {
+		extension = check_extension_file(file->d_name);
+		if (extension == 0) {
 			path[nb_path] = my_strcat("./tetriminos/", file->d_name);
 			nb_path++;
 		}
