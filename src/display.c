@@ -49,13 +49,15 @@ void display_layers(layers_t *layers)
 		mvprintw(9 + i, 6, layers->score[i]);
 	for (int i = 0; layers->text[i + 1]; i++)
 		mvprintw(11 + i, 7, layers->text[i]);
-	for (int i = 0; layers->next[i + 1]; i++)
-		mvprintw(1 + i, 65, layers->next[i]);
 	attroff(COLOR_PAIR(0));
 }
 
-void display_pieces(tetris_t *t)
+void display_next(tetris_t *t, layers_t *layers)
 {
+	if (t->display_next == 0)
+		return;
+	for (int i = 0; layers->next[i + 1]; i++)
+		mvprintw(1 + i, 65, layers->next[i]);
 	for (int i = 0; i < t->pieces[t->next][t->n_rot].y; i++) {
 		for (int j = 0; j < t->pieces[t->next][t->n_rot].x; j++) {
 			attron(COLOR_PAIR(t->pieces[t->next][t->n_rot].color));
@@ -63,7 +65,13 @@ void display_pieces(tetris_t *t)
 			? mvprintw(2 + i, 67 + j, "*") : 0;
 			attroff(COLOR_PAIR(t->pieces[t->next][t->n_rot].color));
 		}
-	} for (int i = 0; i < t->y; i++) {
+	}
+
+}
+
+void display_pieces(tetris_t *t)
+{
+	for (int i = 0; i < t->y; i++) {
 		for (int j = 0; j < t->x; j++) {
 			attron(COLOR_PAIR(t->board[i][j]));
 			(t->board[i][j] != 0)
@@ -84,6 +92,7 @@ void display_tetris(layers_t *layers, tetris_t *tetris)
 		c = wgetch(stdscr);
 		clear();
 		display_layers(layers);
+		display_next(tetris, layers);
 		display_info(tetris);
 		display_pieces(tetris);
 		move_tetris(tetris, c);

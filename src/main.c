@@ -81,6 +81,7 @@ void free_tetris(layers_t *layers, tetris_t *tetris)
 		free(tetris->board[i]);
 	free(tetris->board);
 	free(tetris->high);
+	free(tetris->keys);
 	free(tetris);
 }
 
@@ -101,6 +102,6 @@ int main(int ac, char **av)
 		return (return_value);
 	tetris->board = create_board(tetris);
 	display_tetris(layers, tetris);
-	//free_tetris(layers, tetris);
+	free_tetris(layers, tetris);
 	return (0);
 }

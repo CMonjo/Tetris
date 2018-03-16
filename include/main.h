@@ -37,6 +37,7 @@
 
 	// PROTOTYPES
 
+	int **create_board();
 	int freeze_tetriminos();
 	int tetris_colide();
 	int tetriminos_colide();
