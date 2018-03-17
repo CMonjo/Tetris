@@ -14,7 +14,8 @@ LIB	=	-L lib/ -lmy -lncurses
 SRC	=	src/main.c 				\
 		src/create_tetris.c			\
 		src/create_layers.c			\
-		src/display.c				\
+		src/display_tetris.c			\
+		src/display_layers.c			\
 		src/tetris_move.c			\
 		src/tetris_colide.c			\
 		src/tetriminos.c			\

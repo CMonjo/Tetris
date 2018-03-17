@@ -80,6 +80,33 @@ void free_tetris(layers_t *layers, tetris_t *tetris)
 	free(tetris);
 }
 
+void game_loop(layers_t *layers, tetris_t *tetris)
+{
+	initscr();
+	init_colors();
+	curs_set(0);
+	keypad(stdscr, TRUE);
+	for (char c = 0; c != tetris->keys->n_quit[0] && tetris->lose == 0;) {
+		timeout(0.5);
+		c = wgetch(stdscr);
+		clear();
+		display_layers(layers, tetris);
+		display_next(tetris, layers);
+		display_info(tetris);
+		display_pieces(tetris);
+		move_tetris(tetris, c);
+		refresh();
+	} for (int c = 0; c != tetris->keys->n_quit[0];) {
+		c = wgetch(stdscr);
+		clear();
+		for (int i = 0; layers->loooseeer[i + 1]; i++)
+			mvprintw(1 + i, 2, layers->loooseeer[i]);
+		refresh();
+	}
+	endwin();
+}
+
+
 int main(int ac, char **av)
 {
 	layers_t *layers;
@@ -96,7 +123,7 @@ int main(int ac, char **av)
 	if (return_value != 0)
 		return (return_value);
 	tetris->board = create_board(tetris);
-	display_tetris(layers, tetris);
+	game_loop(layers, tetris);
 	free_tetris(layers, tetris);
 	return (0);
 }

@@ -36,6 +36,7 @@ void x_colide(tetris_t *t, int *x, int *y)
 		(*x)--;
 	if (*x < 0)
 		(*x)++;
+	y = y;
 }
 
 // for (int i = 0, col = 0; i < t->pieces[t->actual][t->rot].y; i++, col++) {

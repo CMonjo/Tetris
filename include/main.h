@@ -36,6 +36,11 @@
 
 	// PROTOTYPES
 
+	void display_next_board();
+	void display_info();
+	void display_pieces();
+	void display_layers();
+	void display_next();
 	int **create_board();
 	int freeze_tetriminos();
 	int tetris_colide();
@@ -47,7 +52,7 @@
 	layers_t *fill_layers();
 	char *my_read();
 	void display_layers();
-	void display_tetris();
+	void game_loop();
 	piece_t **create_pieces();
 	tetris_t *create_tetris();
 	void move_tetris(tetris_t *tetris, char c);
