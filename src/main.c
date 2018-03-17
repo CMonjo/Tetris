@@ -97,7 +97,7 @@ int main(int ac, char **av)
 	tetris = create_tetris();
 	if (tetris->keys == NULL || layers == NULL || tetris == NULL)
 		return (84);
-	return_value = parsing_input(tetris, tetris->keys, av);
+	return_value = parsing_input(tetris, av);
 	if (return_value != 0)
 		return (return_value);
 	tetris->board = create_board(tetris);
