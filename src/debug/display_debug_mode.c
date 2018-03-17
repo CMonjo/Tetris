@@ -10,7 +10,7 @@
 void display_error(void)
 {
 	my_putstr("Error input\n");
-	exit (84);
+	exit(84);
 }
 
 void display_options(tetris_t *tetris)

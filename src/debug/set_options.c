@@ -49,8 +49,8 @@ int set_map_size(tetris_t *tetris, char **av, int i)
 		k != 2 ? display_error() : 0;
 		if (tmp != NULL && my_str_isnum(tab[0]) == 1
 		&& my_str_isnum(tab[1]) == 1) {
-				tetris->x = my_getnbr(tab[0]);
-				tetris->y = my_getnbr(tab[1]);
+			tetris->x = my_getnbr(tab[0]);
+			tetris->y = my_getnbr(tab[1]);
 		} else
 			display_error();
 	}

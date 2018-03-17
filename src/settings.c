@@ -11,7 +11,7 @@ stgs_t stgs[] = {
 	{"-h", "--help", 6, &set_help},
 	{"-L", "--level=", 8, &set_level},
 	{"-l", "--key-left=", 11, &set_key_left},
-	{"-r", "--key-right=", 12,  &set_key_right},
+	{"-r", "--key-right=", 12, &set_key_right},
 	{"-t", "--key-turn=", 11, &set_key_turn},
 	{"-d", "--key-drop=", 11, &set_key_drop},
 	{"-q", "--key-quit=", 11, &set_key_quit},

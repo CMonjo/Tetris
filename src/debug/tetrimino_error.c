@@ -92,6 +92,6 @@ int called_tetrimino(char *path)
 	else {
 		piece_info(piece);
 	}
-	free (piece);
+	free(piece);
 	return (0);
 }

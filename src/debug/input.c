@@ -38,7 +38,7 @@ int set_help(tetris_t *tetris, char **av, int index)
 	my_putstr(" [options]\n");
 	my_putstr(help);
 	free(help);
-	exit (index);
+	exit(index);
 }
 
 int parsing_loop(tetris_t *t, char **av, int i, int j)
