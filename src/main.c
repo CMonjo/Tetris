@@ -77,8 +77,12 @@ void game_loop(layers_t *layers, tetris_t *tetris)
 
 void stock_score(tetris_t *tetris)
 {
+	int fd;
+
 	if (tetris->score > my_getnbr(tetris->high)) {
-		tetris = tetris;
+		fd = open("help/high_score.txt", O_WRONLY);
+		write(fd, tetris->high, my_strlen(tetris->high));
+		close(fd);
 	}
 }
 
