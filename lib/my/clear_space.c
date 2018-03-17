@@ -5,7 +5,7 @@
 ** Main file
 */
 
-#include "tools.h"
+#include "my.h"
 
 void remove_space(char *str)
 {

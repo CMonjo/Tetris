@@ -24,7 +24,6 @@
 	#include <string.h>
 	#include <fcntl.h>
 	#include "my.h"
-	#include "tools.h"
 	#include "struct.h"
 
 	// EXTERN

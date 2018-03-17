@@ -5,7 +5,7 @@
 ** Main file
 */
 
-#include "tools.h"
+#include "my.h"
 #include "main.h"
 
 int init_key(int key)

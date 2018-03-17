@@ -22,7 +22,7 @@
 		char *short_name;
 		char *long_name;
 		int size;
-		int (*callback)();
+		int(*callback)();
 	} stgs_t;
 
 	typedef struct piece_s {

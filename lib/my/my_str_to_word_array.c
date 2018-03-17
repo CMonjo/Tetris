@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include "tools.h"
+#include "my.h"
 
 char **my_str_to_word_array(char *str, char c)
 {

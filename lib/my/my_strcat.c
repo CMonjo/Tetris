@@ -5,7 +5,7 @@
 ** task 2
 */
 
-#include "tools.h"
+#include "my.h"
 #include <stdlib.h>
 
 char *my_strcat(char *str1, char *str2)
