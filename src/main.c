@@ -78,7 +78,7 @@ void game_loop(layers_t *layers, tetris_t *tetris)
 void stock_score(tetris_t *tetris)
 {
 	if (tetris->score > my_getnbr(tetris->high)) {
-
+		tetris = tetris;
 	}
 }
 
