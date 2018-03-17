@@ -11,7 +11,7 @@ int set_level(tetris_t *tetris, char **av, int i)
 {
 	char *tmp = malloc(sizeof(char) * (my_strlen(av[i]) + 1));
 
-	if (tmp == NULL)
+	for (; tmp == NULL;)
 		return (i);
 	if (my_strncmp(av[i], stgs[1].long_name, stgs[1].size) == 0) {
 		tmp = parse_long_name(av[i], tmp);
@@ -40,7 +40,7 @@ int set_map_size(tetris_t *tetris, char **av, int i)
 	char **tab;
 	int k = 0;
 
-	if (tmp == NULL)
+	for (; tmp == NULL;)
 		return (i);
 	if (my_strncmp(av[i], stgs[8].long_name, stgs[8].size) == 0) {
 		tmp = parse_long_name(av[i], tmp);

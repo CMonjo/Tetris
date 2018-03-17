@@ -61,7 +61,8 @@ int parsing_loop(tetris_t *t, char **av, int i, int j)
 
 int parsing_input(tetris_t *t, char **av)
 {
-	for (int i = 1; av[i] != NULL; i++, t->keys->error_input = 0, t->keys->my_break = 0) {
+	for (int i = 1; av[i] != NULL; i++, t->keys->error_input = 0,
+		t->keys->my_break = 0) {
 		for (int j = 0; j < 11; j++) {
 			i = parsing_loop(t, av, i, j);
 			if (t->keys->my_break == 1)

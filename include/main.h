@@ -73,4 +73,5 @@
 	char *parse_long_name();
 	void display_error();
 	void open_tetriminos();
+	int called_tetrimino();
 #endif
