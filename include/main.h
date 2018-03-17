@@ -36,6 +36,9 @@
 
 	// PROTOTYPES
 
+	void free_tetris();
+	void free_pieces();
+	void free_layers();
 	void display_next_board();
 	void display_info();
 	void display_pieces();

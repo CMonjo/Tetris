@@ -43,41 +43,15 @@ keys_t *init_keys(void)
 	return (keys);
 }
 
-void free_tetris(layers_t *layers, tetris_t *tetris)
+void end_loop(layers_t *layers, tetris_t *tetris)
 {
-	for (int i = 0; layers->name[i]; i++)
-		free(layers->name[i]);
-	free(layers->name);
-	free(layers->board);
-	for (int i = 0; layers->score[i]; i++)
-		free(layers->score[i]);
-	free(layers->score);
-	free(layers->next);
-	for (int i = 0; layers->text[i]; i++)
-		free(layers->text[i]);
-	free(layers->text);
-	for (int i = 0; layers->art[i]; i++)
-		free(layers->art[i]);
-	free(layers->art);
-	for (int i = 0; layers->loooseeer[i]; i++)
-		free(layers->loooseeer[i]);
-	free(layers->loooseeer);
-	free(layers);
-	for (int i = 0; i < tetris->tetriminos; i++) {
-		for (int j = 0; j < 4; j++) {
-			for (int k = 0; k < tetris->pieces[i][j].y; k++)
-				free(tetris->pieces[i][j].piece[k]);
-			free(tetris->pieces[i][j].piece);
-		}
-		free(tetris->pieces[i]);
+	for (int c = 0; c != tetris->keys->n_quit[0];) {
+		c = wgetch(stdscr);
+		clear();
+		for (int i = 0; layers->loooseeer[i + 1]; i++)
+			mvprintw(1 + i, 2, layers->loooseeer[i]);
+		refresh();
 	}
-	free(tetris->pieces);
-	for (int i = 0; i < tetris->y; i++)
-		free(tetris->board[i]);
-	free(tetris->board);
-	free(tetris->high);
-	free(tetris->keys);
-	free(tetris);
 }
 
 void game_loop(layers_t *layers, tetris_t *tetris)
@@ -96,16 +70,17 @@ void game_loop(layers_t *layers, tetris_t *tetris)
 		display_pieces(tetris);
 		move_tetris(tetris, c);
 		refresh();
-	} for (int c = 0; c != tetris->keys->n_quit[0];) {
-		c = wgetch(stdscr);
-		clear();
-		for (int i = 0; layers->loooseeer[i + 1]; i++)
-			mvprintw(1 + i, 2, layers->loooseeer[i]);
-		refresh();
 	}
+	end_loop(layers, tetris);
 	endwin();
 }
 
+void stock_score(tetris_t *tetris)
+{
+	if (tetris->score > my_getnbr(tetris->high)) {
+
+	}
+}
 
 int main(int ac, char **av)
 {
@@ -114,7 +89,6 @@ int main(int ac, char **av)
 	int return_value = -1;
 
 	(void)ac;
-	srand(time(NULL));
 	layers = fill_layers();
 	tetris = create_tetris();
 	if (tetris->keys == NULL || layers == NULL || tetris == NULL)
@@ -124,6 +98,8 @@ int main(int ac, char **av)
 		return (return_value);
 	tetris->board = create_board(tetris);
 	game_loop(layers, tetris);
-	free_tetris(layers, tetris);
+	stock_score(tetris);
+	free_layers(layers);
+	free_tetris(tetris);
 	return (0);
 }

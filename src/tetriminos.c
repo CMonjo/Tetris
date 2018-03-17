@@ -31,6 +31,8 @@ piece_t info_piece(char *path)
 	piece.piece = malloc(sizeof(int *) * piece.y);
 	for (int j = 1; j < piece.y + 1; j++) {
 		piece.piece[j - 1] = malloc(sizeof(int) * piece.x);
+		for (int i = 0; i < piece.x; i++)
+			piece.piece[j - 1][i] = 0;
 		for (int i = 0; i < piece.x && lines[j][i] != '\0'; i++) {
 			piece.piece[j - 1][i] = (lines[j][i] == '*')
 			? piece.color : 0;
