@@ -7,6 +7,17 @@
 
 #include "main.h"
 
+void free_piece(char *file, char **lines, char **info)
+{
+	free(file);
+	for (int i = 0; lines[i]; i++)
+	free(lines[i]);
+	free(lines);
+	for (int i = 0; info[i]; i++)
+	free(info[i]);
+	free(info);
+}
+
 piece_t info_piece(char *path)
 {
 	piece_t piece;
@@ -20,18 +31,12 @@ piece_t info_piece(char *path)
 	piece.piece = malloc(sizeof(int *) * piece.y);
 	for (int j = 1; j < piece.y + 1; j++) {
 		piece.piece[j - 1] = malloc(sizeof(int) * piece.x);
-		for (int i = 0; i < piece.x; i++) {
+		for (int i = 0; i < piece.x && lines[j][i] != '\0'; i++) {
 			piece.piece[j - 1][i] = (lines[j][i] == '*')
 			? piece.color : 0;
 		}
 	}
-	free(file);
-	for (int i = 0; lines[i]; i++)
-		free(lines[i]);
-	free(lines);
-	for (int i = 0; info[i]; i++)
-		free(info[i]);
-	free(info);
+	free_piece(file, lines, info);
 	return (piece);
 }
 
