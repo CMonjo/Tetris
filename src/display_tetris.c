@@ -23,9 +23,9 @@ void display_next(tetris_t *t, layers_t *layers)
 {
 	if (t->display_next == 0)
 		return;
-	attron(COLOR_PAIR(my_getnbr(layers->next)));
+	attron(COLOR_PAIR(get_2_nbr(layers->next)));
 	display_next_board(t, layers);
-	attroff(COLOR_PAIR(my_getnbr(layers->next)));
+	attroff(COLOR_PAIR(get_2_nbr(layers->next)));
 	for (int i = 0; i < t->pieces[t->next][t->n_rot].y; i++) {
 		for (int j = 0; j < t->pieces[t->next][t->n_rot].x; j++) {
 			attron(COLOR_PAIR(t->pieces[t->next][t->n_rot].color));
