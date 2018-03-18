@@ -58,11 +58,14 @@ void game_loop(layers_t *layers, tetris_t *tetris)
 void stock_score(tetris_t *tetris)
 {
 	int fd;
+	char *score;
 
 	if (tetris->score > my_getnbr(tetris->high)) {
 		fd = open("help/high_score.txt", O_WRONLY);
-		write(fd, tetris->high, my_strlen(tetris->high));
+		score = i_to_a(tetris->score);
+		write(fd, score, my_strlen(score));
 		close(fd);
+		free(score);
 	}
 }
 

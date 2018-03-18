@@ -61,9 +61,9 @@ void display_layers(layers_t *layers, tetris_t *tetris)
 		mvprintw(19 + i, 24, layers->art[i]);
 	for (int i = 0; layers->name[i + 1]; i++)
 		mvprintw(1 + i, 2, layers->name[i]);
-	attron(COLOR_PAIR(my_getnbr(layers->board)));
+	attron(COLOR_PAIR(get_2_nbr(layers->board)));
 	display_play_board(tetris, layers);
-	attroff(COLOR_PAIR(my_getnbr(layers->board)));
+	attroff(COLOR_PAIR(get_2_nbr(layers->board)));
 	for (int i = 0; layers->score[i + 1]; i++)
 		mvprintw(9 + i, 6, layers->score[i]);
 	for (int i = 0; layers->text[i + 1]; i++)
