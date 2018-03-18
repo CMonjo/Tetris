@@ -23,38 +23,6 @@ keys_t *init_keys(void)
 	return (keys);
 }
 
-void end_loop(layers_t *layers, tetris_t *tetris)
-{
-	for (int c = 0; c != tetris->keys->n_quit[0];) {
-		c = wgetch(stdscr);
-		clear();
-		for (int i = 0; layers->loooseeer[i + 1]; i++)
-			mvprintw(1 + i, 2, layers->loooseeer[i]);
-		refresh();
-	}
-}
-
-void game_loop(layers_t *layers, tetris_t *tetris)
-{
-	initscr();
-	init_colors();
-	curs_set(0);
-	keypad(stdscr, TRUE);
-	for (int c = 0; c != tetris->keys->n_quit[0] && tetris->lose == 0;) {
-		timeout(0.5);
-		c = wgetch(stdscr);
-		clear();
-		display_layers(layers, tetris);
-		display_next(tetris, layers);
-		display_info(tetris);
-		display_pieces(tetris);
-		move_tetris(tetris, c);
-		refresh();
-	}
-	end_loop(layers, tetris);
-	endwin();
-}
-
 void stock_score(tetris_t *tetris)
 {
 	int fd;

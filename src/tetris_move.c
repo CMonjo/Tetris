@@ -51,7 +51,7 @@ void breack_line(tetris_t *tetris)
 			fall_tetris(tetris, i);
 			level ++;
 		}
-	} if (level >= 5) {
+	} if (level >= 9) {
 		tetris->level ++;
 		level = 0;
 	}
