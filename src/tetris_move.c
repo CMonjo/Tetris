@@ -15,43 +15,8 @@ void tetris_keys(tetris_t *tetris, int *x, int *y, int c)
 		*x += (c == tetris->keys->n_right[0]) ? 1 : 0;
 		*x -= (c == tetris->keys->n_left[0]) ? 1 : 0;
 	} else {
-		if (c == 258) {
-			if (my_strlen(tetris->keys->n_turn) == 5 && tetris->keys->n_turn[4] == 'B')
-				tetris->rot++;
-			if (my_strlen(tetris->keys->n_drop) == 5 && tetris->keys->n_drop[4] == 'B')
-				(*y)++;
-			if (my_strlen(tetris->keys->n_right) == 5 && tetris->keys->n_right[4] == 'B')
-				(*x)++;
-			if (my_strlen(tetris->keys->n_left) == 5 && tetris->keys->n_left[4] == 'B')
-				(*x)--;
-		} else if (c == 259) {
-			if (my_strlen(tetris->keys->n_turn) == 5 && tetris->keys->n_turn[4] == 'A')
-				tetris->rot++;
-			if (my_strlen(tetris->keys->n_drop) == 5 && tetris->keys->n_drop[4] == 'A')
-				(*y)++;
-			if (my_strlen(tetris->keys->n_right) == 5 && tetris->keys->n_right[4] == 'A')
-				(*x)++;
-			if (my_strlen(tetris->keys->n_left) == 5 && tetris->keys->n_left[4] == 'A')
-				(*x)--;
-		} else if (c == 260) {
-			if (my_strlen(tetris->keys->n_turn) == 5 && tetris->keys->n_turn[4] == 'D')
-				tetris->rot++;
-			if (my_strlen(tetris->keys->n_drop) == 5 && tetris->keys->n_drop[4] == 'D')
-				(*y)++;
-			if (my_strlen(tetris->keys->n_right) == 5 && tetris->keys->n_right[4] == 'D')
-				(*x)++;
-			if (my_strlen(tetris->keys->n_left) == 5 && tetris->keys->n_left[4] == 'D')
-				(*x)--;
-		} else if (c == 261) {
-			if (my_strlen(tetris->keys->n_turn) == 5 && tetris->keys->n_turn[4] == 'C')
-				tetris->rot++;
-			if (my_strlen(tetris->keys->n_drop) == 5 && tetris->keys->n_drop[4] == 'C')
-				(*y)++;
-			if (my_strlen(tetris->keys->n_right) == 5 && tetris->keys->n_right[4] == 'C')
-				(*x)++;
-			if (my_strlen(tetris->keys->n_left) == 5 && tetris->keys->n_left[4] == 'C')
-				(*x)--;
-		}
+		tetris_up_down(tetris, x, y, c);
+		tetris_right_left(tetris, x, y, c);
 	}
 	tetris->rot = (tetris->rot > 3) ? 0 : tetris->rot;
 }

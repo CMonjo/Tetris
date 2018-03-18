@@ -28,7 +28,8 @@ SRC	=	src/main.c 				\
 		src/debug/set_keys_option.c		\
 		src/debug/tetrimino_error.c		\
 		src/debug/tetrimino_folder_open.c	\
-		src/free_tetris.c
+		src/free_tetris.c			\
+		src/tetris_move_arrows.c
 
 OBJ	=	$(SRC:.c=.o)
 

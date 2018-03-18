@@ -36,6 +36,8 @@
 
 	// PROTOTYPES
 
+	void tetris_right_left();
+	void tetris_up_down();
 	int get_2_nbr();
 	void free_tetris();
 	void free_pieces();
