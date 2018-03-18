@@ -7,26 +7,6 @@
 
 #include "main.h"
 
-void display_info(tetris_t *tetris)
-{
-	char *str;
-
-	mvprintw(11, 26, tetris->high);
-	str = i_to_a(tetris->score);
-	mvprintw(12, 26, str);
-	free(str);
-	str = i_to_a(tetris->lines);
-	mvprintw(14, 26, str);
-	free(str);
-	str = i_to_a(tetris->level);
-	mvprintw(15, 26, str);
-	free(str);
-	tetris->timer = clock() / CLOCKS_PER_SEC;
-	str = i_to_a(tetris->timer);
-	mvprintw(17, 26, str);
-	free(str);
-}
-
 int get_2_nbr(char *str)
 {
 	return (((str[4] - '0') * 10) + str[5] - '0');
@@ -64,32 +44,36 @@ void display_layers(layers_t *layers, tetris_t *tetris)
 	attron(COLOR_PAIR(get_2_nbr(layers->board)));
 	display_play_board(tetris, layers);
 	attroff(COLOR_PAIR(get_2_nbr(layers->board)));
-	for (int i = 0; layers->score[i + 1]; i++)
+	attron(COLOR_PAIR(my_getnbr(layers->score[11])));
+	for (int i = 0; layers->score[i + 2]; i++)
 		mvprintw(9 + i, 6, layers->score[i]);
-	for (int i = 0; layers->text[i + 1]; i++)
+	attroff(COLOR_PAIR(my_getnbr(layers->score[11])));
+	attron(COLOR_PAIR(my_getnbr(layers->text[7])));
+	for (int i = 0; layers->text[i + 2]; i++)
 		mvprintw(11 + i, 7, layers->text[i]);
+	attroff(COLOR_PAIR(my_getnbr(layers->text[7])));
 }
 
 void display_next_board(tetris_t *t, layers_t *layers)
 {
-	char str[2];
+	char str[2] = "\0\0";
+	int nxt = 44 + t->x;
 
-	str[1] = '\0';
 	str[0] = layers->next[0];
-	mvprintw(1, 65, str);
+	mvprintw(1, nxt - 1, str);
 	mvprintw(1 + t->pieces[t->next][t->n_rot].y + 1,
-	68 + t->pieces[t->next][t->n_rot].x, str);
+	nxt + 2 + t->pieces[t->next][t->n_rot].x, str);
 	str[0] = layers->next[1];
 	for (int i = 0; i < t->pieces[t->next][t->n_rot].x + 2; i++) {
-		mvprintw(1, 66 + i, str);
-		mvprintw(1 + t->pieces[t->next][t->n_rot].y + 1, 66 + i, str);
+		mvprintw(1, nxt + i, str);
+		mvprintw(1 + t->pieces[t->next][t->n_rot].y + 1, nxt + i, str);
 	}
 	str[0] = layers->next[2];
-	mvprintw(1, 68 + t->pieces[t->next][t->n_rot].x, str);
-	mvprintw(1 + t->pieces[t->next][t->n_rot].y + 1, 65, str);
+	mvprintw(1, nxt + 2 + t->pieces[t->next][t->n_rot].x, str);
+	mvprintw(1 + t->pieces[t->next][t->n_rot].y + 1, nxt - 1, str);
 	str[0] = layers->next[3];
 	for (int i = 0; i < t->pieces[t->next][t->n_rot].y; i++) {
-		mvprintw(2 + i, 65, str);
-		mvprintw(2 + i, 68 + t->pieces[t->next][t->n_rot].x, str);
+		mvprintw(2 + i, nxt - 1, str);
+		mvprintw(2 + i, nxt + 2 + t->pieces[t->next][t->n_rot].x, str);
 	}
 }
