@@ -7,6 +7,17 @@
 
 #include "main.h"
 
+void end_loop(layers_t *layers, tetris_t *tetris)
+{
+	for (int c = 0; c != tetris->keys->n_quit[0];) {
+		c = wgetch(stdscr);
+		clear();
+		for (int i = 0; layers->loooseeer[i + 1]; i++)
+			mvprintw(1 + i, 2, layers->loooseeer[i]);
+		refresh();
+	}
+}
+
 void play_loop(layers_t *layers, tetris_t *tetris, int c)
 {
 	int lines = 20;
@@ -38,5 +49,6 @@ void game_loop(layers_t *layers, tetris_t *tetris)
 		play_loop(layers, tetris, c);
 		refresh();
 	}
+	end_loop(layers, tetris);
 	endwin();
 }

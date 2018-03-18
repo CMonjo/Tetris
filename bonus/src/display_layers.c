@@ -37,6 +37,8 @@ void display_play_board(tetris_t *t, layers_t *layers)
 
 void display_layers(layers_t *layers, tetris_t *tetris)
 {
+	for (int i = 0; layers->art[i + 1]; i++)
+		mvprintw(19 + i, 24, layers->art[i]);
 	for (int i = 0; layers->name[i + 1]; i++)
 		mvprintw(1 + i, 2, layers->name[i]);
 	attron(COLOR_PAIR(get_2_nbr(layers->board)));
