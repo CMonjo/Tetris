@@ -7,13 +7,18 @@
 
 #include "main.h"
 
-void tetris_keys(tetris_t *tetris, int *x, int *y, char c)
+void tetris_keys(tetris_t *tetris, int *x, int *y, int c)
 {
-	tetris->rot += (c == tetris->keys->n_turn[0]) ? 1 : 0;
+	if (c < 258 || c > 261) {
+		tetris->rot += (c == tetris->keys->n_turn[0]) ? 1 : 0;
+		*y += (c == tetris->keys->n_drop[0]) ? 1 : 0;
+		*x += (c == tetris->keys->n_right[0]) ? 1 : 0;
+		*x -= (c == tetris->keys->n_left[0]) ? 1 : 0;
+	} else {
+		tetris_up_down(tetris, x, y, c);
+		tetris_right_left(tetris, x, y, c);
+	}
 	tetris->rot = (tetris->rot > 3) ? 0 : tetris->rot;
-	*y += (c == tetris->keys->n_drop[0]) ? 1 : 0;
-	*x += (c == tetris->keys->n_right[0]) ? 1 : 0;
-	*x -= (c == tetris->keys->n_left[0]) ? 1 : 0;
 }
 
 void tetris_gravity(tetris_t *tetris, int *y)
@@ -52,7 +57,7 @@ void breack_line(tetris_t *tetris)
 	}
 }
 
-void move_tetris(tetris_t *tetris, char c)
+void move_tetris(tetris_t *tetris, int c)
 {
 	static int x = 0;
 	static int y = 0;

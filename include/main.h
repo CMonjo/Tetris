@@ -36,6 +36,8 @@
 
 	// PROTOTYPES
 
+	void tetris_right_left();
+	void tetris_up_down();
 	int get_2_nbr();
 	void free_tetris();
 	void free_pieces();
@@ -59,7 +61,7 @@
 	void game_loop();
 	piece_t **create_pieces();
 	tetris_t *create_tetris();
-	void move_tetris(tetris_t *tetris, char c);
+	void move_tetris();
 	void display_keys();
 	void display_options();
 	void init_colors();

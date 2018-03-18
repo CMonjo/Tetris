@@ -40,7 +40,7 @@ void game_loop(layers_t *layers, tetris_t *tetris)
 	init_colors();
 	curs_set(0);
 	keypad(stdscr, TRUE);
-	for (char c = 0; c != tetris->keys->n_quit[0] && tetris->lose == 0;) {
+	for (int c = 0; c != tetris->keys->n_quit[0] && tetris->lose == 0;) {
 		timeout(0.5);
 		c = wgetch(stdscr);
 		clear();
