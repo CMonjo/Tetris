@@ -20,7 +20,8 @@ void end_loop(layers_t *layers, tetris_t *tetris)
 
 void play_loop(layers_t *layers, tetris_t *tetris, int c)
 {
-	if (COLS > 45 + tetris->x + tetris->pieces[tetris->actual][tetris->rot].x && LINES >= 20) {
+	if (COLS > 46 + tetris->x + tetris->pieces[tetris->next]
+	[tetris->n_rot].x && LINES >= 20) {
 		display_layers(layers, tetris);
 		display_next(tetris, layers);
 		display_info(tetris);
@@ -42,8 +43,6 @@ void game_loop(layers_t *layers, tetris_t *tetris)
 		c = wgetch(stdscr);
 		clear();
 		play_loop(layers, tetris, c);
-		mvprintw(7, 0, i_to_a(COLS));
-		mvprintw(8, 0, i_to_a(LINES));
 		refresh();
 	}
 	end_loop(layers, tetris);
