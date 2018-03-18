@@ -20,8 +20,12 @@ void end_loop(layers_t *layers, tetris_t *tetris)
 
 void play_loop(layers_t *layers, tetris_t *tetris, int c)
 {
+	int lines = 20;
+
+	if (tetris->y > 18)
+		lines = tetris->y + 2;
 	if (COLS > 46 + tetris->x + tetris->pieces[tetris->next]
-	[tetris->n_rot].x && LINES >= 20) {
+	[tetris->n_rot].x && LINES >= lines) {
 		display_layers(layers, tetris);
 		display_next(tetris, layers);
 		display_info(tetris);
