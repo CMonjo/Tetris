@@ -10,21 +10,21 @@
 void free_layers(layers_t *layers)
 {
 	for (int i = 0; layers->name[i]; i++)
-	free(layers->name[i]);
+		free(layers->name[i]);
 	free(layers->name);
 	free(layers->board);
 	for (int i = 0; layers->score[i]; i++)
-	free(layers->score[i]);
+		free(layers->score[i]);
 	free(layers->score);
 	free(layers->next);
 	for (int i = 0; layers->text[i]; i++)
-	free(layers->text[i]);
+		free(layers->text[i]);
 	free(layers->text);
 	for (int i = 0; layers->art[i]; i++)
-	free(layers->art[i]);
+		free(layers->art[i]);
 	free(layers->art);
 	for (int i = 0; layers->loooseeer[i]; i++)
-	free(layers->loooseeer[i]);
+		free(layers->loooseeer[i]);
 	free(layers->loooseeer);
 	free(layers);
 }

@@ -14,10 +14,13 @@ void display_info(tetris_t *tetris)
 	mvprintw(11, 26, tetris->high);
 	str = i_to_a(tetris->score);
 	mvprintw(12, 26, str);
+	free(str);
 	str = i_to_a(tetris->lines);
 	mvprintw(14, 26, str);
+	free(str);
 	str = i_to_a(tetris->level);
 	mvprintw(15, 26, str);
+	free(str);
 	tetris->timer = clock() / CLOCKS_PER_SEC;
 	str = i_to_a(tetris->timer);
 	mvprintw(17, 26, str);

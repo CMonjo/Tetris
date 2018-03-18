@@ -27,5 +27,6 @@ char *my_strcat(char *str1, char *str2)
 		j ++;
 	}
 	dest[i] = '\0';
+	free(str1);
 	return (dest);
 }

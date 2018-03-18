@@ -54,6 +54,7 @@ char *new_board(char *path)
 	board[4] = str[0];
 	board[5] = str[1];
 	board[6] = '\0';
+	free(str);
 	return (board);
 }
 
