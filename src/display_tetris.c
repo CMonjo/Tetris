@@ -30,7 +30,7 @@ void display_next(tetris_t *t, layers_t *layers)
 		for (int j = 0; j < t->pieces[t->next][t->n_rot].x; j++) {
 			attron(COLOR_PAIR(t->pieces[t->next][t->n_rot].color));
 			(t->pieces[t->next][t->n_rot].piece[i][j] != 0)
-			? mvprintw(2	 + i, 67 + j, "*") : 0;
+			? mvprintw(2 + i, 67 + j, "*") : 0;
 			attroff(COLOR_PAIR(t->pieces[t->next][t->n_rot].color));
 		}
 	}

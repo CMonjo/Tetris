@@ -24,6 +24,8 @@ SRC	=	my_strlen.c		\
 		clear_space.c		\
 		clear_tab.c		\
 		my_str_array.c		\
+		concat_paths.c		\
+		i_to_a.c		\
 		my_str_to_word_array.c
 
 OBJ	=	$(SRC:.c=.o)

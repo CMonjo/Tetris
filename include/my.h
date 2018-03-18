@@ -24,4 +24,6 @@
 	void remove_space(char *str);
 	char *replace_tab(char *str);
 	void remove_tab(char *str);
+	char *concat_path(char *str1, char *str2);
+	char *i_to_a(int number);
 #endif

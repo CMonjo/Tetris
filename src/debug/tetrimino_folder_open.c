@@ -80,7 +80,7 @@ void open_tetriminos(void)
 		extension = check_extension_file(file->d_name);
 		if (extension == 0) {
 			path[nb_path] =
-			my_strcat("./tetriminos/", file->d_name);
+			concat_path("./tetriminos/", file->d_name);
 			nb_path++;
 		}
 	}

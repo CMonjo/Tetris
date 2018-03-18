@@ -71,7 +71,7 @@ int parsing_input(tetris_t *t, char **av)
 		t->keys->error_input == 0 ? display_error() : 0;
 	}
 	t->keys->debug != 0 ? set_debug(t) : 0;
-	t->x > 100 ? t->x = 100 : 0;
-	t->y > 100 ? t->y = 100 : 0;
+	t->x > 50 ? t->x = 50 : 0;
+	t->y > 50 ? t->y = 50 : 0;
 	return (0);
 }
