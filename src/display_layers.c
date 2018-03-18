@@ -39,19 +39,19 @@ void display_play_board(tetris_t *t, layers_t *layers)
 	str[1] = '\0';
 	str[0] = layers->board[0];
 	mvprintw(0, 40, str);
-	mvprintw(0 + t->y + 1, 43 + t->x, str);
+	mvprintw(0 + t->y + 1, 41 + t->x, str);
 	str[0] = layers->board[1];
-	for (int i = 0; i < t->x + 2; i++) {
+	for (int i = 0; i < t->x; i++) {
 		mvprintw(0, 41 + i, str);
 		mvprintw(0 + t->y + 1, 41 + i, str);
 	}
 	str[0] = layers->board[2];
-	mvprintw(0, 43 + t->x, str);
+	mvprintw(0, 41 + t->x, str);
 	mvprintw(0 + t->y + 1, 40, str);
 	str[0] = layers->board[3];
 	for (int i = 0; i < t->y; i++) {
 		mvprintw(1 + i, 40, str);
-		mvprintw(1 + i, 43 + t->x, str);
+		mvprintw(1 + i, 41 + t->x, str);
 	}
 }
 

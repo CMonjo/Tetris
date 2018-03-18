@@ -90,6 +90,8 @@ piece_t **create_pieces(void)
 
 	if (!pieces)
 		return (NULL);
+	// pieces[0] = create_rotation("pieces/bar.tetrimino");
+	// pieces[1] = create_rotation("pieces/square.tetrimino");
 	pieces[0] = create_rotation("pieces/5.tetrimino");
 	pieces[1] = create_rotation("pieces/6.tetrimino");
 	pieces[2] = create_rotation("pieces/7.tetrimino");

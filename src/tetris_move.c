@@ -28,9 +28,9 @@ void tetris_gravity(tetris_t *tetris, int *y)
 
 void fall_tetris(tetris_t *tetris, int line)
 {
-	for (int i = 1; i < line; i++) {
+	for (int i = line; i > 1; i--) {
 		for (int j = 0; j < tetris->x; j++)
-			tetris->board[i + 1][j] = tetris->board[i][j];
+			tetris->board[i][j] = tetris->board[i - 1][j];
 	}
 }
 
@@ -56,8 +56,10 @@ void move_tetris(tetris_t *tetris, char c)
 {
 	static int x = 0;
 	static int y = 0;
+	static int tmp = 0;
 
-	x = (x == 0) ? tetris->x / 2 : x;
+	x = (tmp == 0) ? tetris->x / 2 : x;
+	tmp ++;
 	tetris_gravity(tetris, &y);
 	tetris_keys(tetris, &x, &y, c);
 	if (tetris_colide(tetris, &x, &y) == 1) {
@@ -67,7 +69,7 @@ void move_tetris(tetris_t *tetris, char c)
 		tetris->next = rand() % tetris->tetriminos;
 		tetris->rot = tetris->n_rot;
 		tetris->n_rot = rand() % 4;
-		x = 0;
+		x = tetris->x / 2;
 		y = 0;
 	}
 	breack_line(tetris);

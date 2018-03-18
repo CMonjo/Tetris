@@ -16,6 +16,11 @@ keys_t *init_keys(void)
 	keys->n_turn = "ˆEOA";
 	keys->n_drop = "ˆEOB";
 	keys->n_quit = "q";
+	keys->n_drop = "s";
+	keys->n_left = "q";
+	keys->n_right = "d";
+	keys->n_turn = "r";
+	keys->n_quit = "e";
 	keys->n_pause = "(space)";
 	keys->debug = 0;
 	keys->error_input = 0;
