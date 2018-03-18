@@ -7,7 +7,7 @@
 
 CC	=	gcc
 
-CFLAGS	=	-Wextra -W -Wall -I ./include/ -g3
+CFLAGS	=	-Wextra -W -Wall -I ./include/
 
 LIB	=	-L lib/ -lmy -lncurses
 

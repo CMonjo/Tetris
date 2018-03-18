@@ -7,9 +7,9 @@
 
 CC	=	gcc
 
-CFLAGS	=	-Wextra -W -Wall -I ./include/ -g3
+CFLAGS	=	-Wextra -W -Wall -I ../include/
 
-LIB	=	-L lib/ -lmy -lncurses
+LIB	=	-L ../lib/ -lmy -lncurses
 
 SRC	=	src/main.c 				\
 		src/create_tetris.c			\
@@ -39,15 +39,15 @@ NAME	=	bonus
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	make -C ./lib/my/
+	make -C ../lib/my/
 	$(CC) $(OBJ) $(CFLAGS) $(LIB) -o $(NAME)
 
 clean:
 	rm -f $(OBJ)
-	make clean -C ./lib/my/
+	make clean -C ../lib/my/
 
 fclean: clean
 	rm -f $(NAME)
-	make fclean -C ./lib/my/
+	make fclean -C ../lib/my/
 
 re: fclean all
