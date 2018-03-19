@@ -24,7 +24,7 @@ void piece_info(char *piece)
 	char **pieces = str_to_array(piece, '\n');
 	int x = my_getnbr(numbers[1]);
 
-	my_putstr(" : Size ");
+	my_putstr(" : Size ");
 	for (; piece[j] != ' '; j++)
 		my_putchar(piece[j]);
 	my_putstr("*");
