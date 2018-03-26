@@ -15,14 +15,14 @@ void display_error(void)
 
 void display_options(tetris_t *tetris)
 {
-	my_putstr("\nNext :	");
+	my_putstr("\nNext : ");
 	if (tetris->display_next == 1)
 		my_putstr("Yes");
 	else if (tetris->display_next == 0)
 		my_putstr("No");
-	my_putstr("\nLevel :	");
+	my_putstr("\nLevel : ");
 	my_put_nbr(tetris->level);
-	my_putstr("\nSize :	");
+	my_putstr("\nSize : ");
 	my_put_nbr(tetris->x);
 	my_putchar('*');
 	my_put_nbr(tetris->y);
