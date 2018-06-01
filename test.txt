@@ -1,0 +1,36 @@
+*** DEBUG MODE ***
+Key Left : (space)
+Key Right : bonjour
+Key Turn : -d
+Key Drop : salut
+Key Quit : qqqqqq
+Key Pause : (space)
+Next : No
+Level : 1
+Size : 1678902*12
+Tetriminos : 7
+Tetriminos : Name 4 : Error
+Tetriminos : Name 5 : Size 1*1 : Color 4 :
+*
+Tetriminos : Name 6 : Size 2*3 : Color 6 :
+ *
+**
+*
+Tetriminos : Name 7 : Size 5*4 : Color 3 :
+ * *
+* * *
+ * *
+  * 
+Tetriminos : Name bar : Size 1*4 : Color 2 :
+*
+*
+*
+*
+Tetriminos : Name inverted-L : Size 2*3 : Color 5 :
+ *
+ *
+**
+Tetriminos : Name square : Size 2*2 : Color 1 :
+**
+**
+Press any key to start Tetris
